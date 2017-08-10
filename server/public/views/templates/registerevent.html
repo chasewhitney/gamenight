@@ -1,0 +1,94 @@
+<div ng-include="'views/partials/nav.html'"></div>
+<div class="container">
+  <p>
+    Register a new event!
+  </p>
+
+
+
+
+  <div flex="70" layout="column" ng-cloak class="md-inline-form everything">
+
+        <md-content layout-gt-sm="row" layout-padding>
+          <div>
+            <md-input-container>
+              <label>Title</label>
+              <input ng-model="uc.newEvent.title">
+            </md-input-container>
+          </div>
+        </md-content>
+
+        <md-content layout-padding>
+          <div>
+            <form name="userForm">
+
+              <div layout-gt-xs="row">
+                <md-input-container class="md-block" flex-gt-xs>
+                  <label>Enter games then hit enter</label>
+                  <md-chips ng-model="uc.newEvent.games" md-removable="uc.removable"></md-chips>
+                </md-input-container>
+
+                <md-input-container>
+                  <label>Enter date</label>
+                  <md-datepicker ng-model="uc.newEvent.date" md-min-date="uc.minDate" md-open-on-focus></md-datepicker>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                  <label>Time</label>
+                  <input ng-model="uc.newEvent.time">
+                </md-input-container>
+              </div>
+
+              <md-input-container class="md-block">
+                <label>Address</label>
+                <input ng-model="uc.newEvent.address">
+              </md-input-container>
+
+              <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                  <label>City</label>
+                  <input ng-model="uc.newEvent.city">
+                </md-input-container>
+
+                <md-input-container class="md-block" flex-gt-sm>
+                  <label>State</label>
+                  <md-select ng-model="uc.newEvent.state">
+                    <md-option ng-repeat="state in uc.states" value="{{state.abbrev}}">
+                      {{state.abbrev}}
+                    </md-option>
+                  </md-select>
+                </md-input-container>
+
+                <md-input-container class="md-block" flex-gt-sm>
+                  <label>Postal Code</label>
+                  <input name="postalCode" ng-model="uc.newEvent.zipCode" placeholder="12345"
+                         required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
+
+                  <div ng-messages="userForm.postalCode.$error" role="alert" multiple>
+                    <div ng-message="required" class="my-message">You must supply a postal code.</div>
+                    <div ng-message="pattern" class="my-message">That doesn't look like a valid postal
+                      code.
+                    </div>
+                    <div ng-message="md-maxlength" class="my-message">
+                      Don't use the long version silly...we don't need to be that specific...
+                    </div>
+                  </div>
+                </md-input-container>
+              </div>
+
+              <md-input-container class="md-block">
+                <label>Description</label>
+                <textarea ng-model="uc.newEvent.description" rows="5" md-select-on-focus></textarea>
+              </md-input-container>
+
+            </form>
+            <button type="button" name="button" ng-click="uc.testEvent()">TEST!</button>
+            <button type="button" name="button" ng-click="uc.createEvent()">SUBMIT!</button>
+          </div>
+
+        </md-content>
+
+      </div>
+
+
+</div>

@@ -1,0 +1,11 @@
+<div ng-include="'views/partials/nav.html'"></div>
+<div class="container">
+  <p>
+    Viewing event!
+  </p>
+  <p>
+    event: {{uc.eventService.eventToView.title}}
+  </p>
+  <button type="button" name="button" ng-click="uc.eventService.addToSaved()">Save</button>
+  <button type="button" name="button" ng-click="uc.mongooseTest()">TEST</button>
+</div>

@@ -1,0 +1,32 @@
+<div ng-include="'views/partials/nav.html'"></div>
+<div class="container">
+  <div class="midContainer">
+
+
+  <label>Search by zip code:</label>
+  <input type="text" name="" ng-model="zip">
+  <button type="button" name="button" ng-click="uc.setSearchZip(zip)">Go!</button>
+  </div>
+
+  <div class="midContainer" flex="80">
+
+    <ng-map zoom="13" center="zip code {{uc.searchZip}}" style="height:600px"
+    on-center-changed="centerCustomMarker()">
+    <marker ng-repeat="item in uc.eventArray" position="{{item.address +  ', ' + item.city +  ', ' + item.state +  ', ' + item.zipCode}}" on-click="map.showInfoWindow(event, '{{item._id}}')"></marker>
+    <info-window ng-repeat="thing in uc.eventArray" id="{{thing._id}}" max-width="200">
+      <div class="infoWindow">
+        <div></div>
+        <h1>{{thing.title}}</h1>
+        <div>
+          <p>
+            {{thing.description}}
+          </p>
+          <button type="button" name="button" ng-click="uc.eventService.goToEvent(thing)">View Event</button>
+
+        </div>
+      </div>
+    </info-window>
+  </ng-map>
+
+</div>
+</div>
