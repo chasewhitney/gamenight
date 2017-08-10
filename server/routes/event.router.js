@@ -7,7 +7,6 @@ var path = require('path');
 
 // Get search results based on filter sent by user
 router.get('/search/:searchParam', function(req, res) {
-  // find (select) all documents in our collection
   var searchParam = req.params.searchParam;
 
   console.log('searchParam:', searchParam);
@@ -27,7 +26,6 @@ router.get('/search/:searchParam', function(req, res) {
 router.get('/myevents/', function(req, res) {
   // find (select) all documents in our collection
   var name = req.user.username;
-  var searchString = "this.saved.includes(name) || this.pending.includes(name) || this.attending.includes(name) || this.denied.includes(name)";
   console.log('name is :', name);
   Event.find({
     "$or": [
@@ -77,7 +75,26 @@ router.post('/createEvent', function(req, res) {
         console.log('save error: ', err);
         res.sendStatus(500);
       } else {
-        res.sendStatus(201);
+
+        Event.findById(data._id,
+        function(err, event) {
+          if(err) {
+            res.sendStatus(500);
+          } else {
+            console.log('success. in add to admin! Found:', event);
+              event.admin.push(req.user.username);
+            event.save(function(err){
+              if(err) {
+                res.sendStatus(500);
+              } else {
+                res.sendStatus(201);
+              }
+            })
+          }
+      });
+
+
+
       }
     });
   });
@@ -108,6 +125,33 @@ router.post('/createEvent', function(req, res) {
       }
   }); // end findOne
   });
+
+  // Add user to saved array on event - indicating user has saved the event
+    router.put('/requestattend/:id', function(req,res){
+      var eventId = req.params.id;
+      console.log('eventId in requestattend is:', eventId);
+      Event.findById(eventId,
+      function(err, event) {
+        if(err) {
+          res.sendStatus(500);
+        } else {
+          console.log('success. in requestattend! Found:', event);
+          if(!event.pending.includes(req.user.username)){
+            event.pending.push(req.user.username);
+          }
+
+
+          event.save(function(err){
+            if(err) {
+              res.sendStatus(500);
+            } else {
+              res.sendStatus(201);
+            }
+          })
+        }
+    }); // end findOne
+    });
+
 
 router.get('/', function(req, res, next) {
   console.log('get /register route');

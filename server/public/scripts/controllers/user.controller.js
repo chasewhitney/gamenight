@@ -78,6 +78,9 @@ vm.states = ('AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI 
 
     vm.getEvents();
 
-    
+vm.test = function(){
+  console.log('vm.userObject is: ',vm.userObject);
+}
+
 
 });

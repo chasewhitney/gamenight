@@ -11,6 +11,8 @@ ev.goToEvent = function(viewEvent){
   $location.path('/viewevent');
 };
 
+
+// add event to saved events
 ev.addToSaved = function(){
   var eid = ev.eventToView._id;
   console.log('id in addToSaved is:', eid);
@@ -20,6 +22,8 @@ ev.addToSaved = function(){
     });
 };
 
+
+// get all events associated with user
 ev.getMyEvents = function(){
     $http.get('/event/myevents').then(function(response){
         console.log('getMyEvents GET response.data:', response.data);
@@ -28,7 +32,21 @@ ev.getMyEvents = function(){
       });
   };
 
+// // save event //// UNUSED?
+// ev.saveEvent = function(id){
+//   $http.put('/event/save/' + id).then(function(response){
+//       console.log('got response from addtosaved PUT');
+//     });
+// };
 
+// request to attend the event that is being viewed
+
+ev.requestToAttend = function(){
+  var id = ev.eventToView._id;
+  $http.put('/event/requestattend/' + id).then(function(response){
+      console.log('got response from addtosaved PUT');
+    });
+};
 
 return ev;
 

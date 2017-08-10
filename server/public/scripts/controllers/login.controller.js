@@ -6,7 +6,6 @@ myApp.controller('LoginController', function($http, $location, UserService) {
       password: '',
       location:'',
       email:'',
-      events: {hosted:[], saved:[], attending:[], pending:[]},
     };
     vm.message = '';
 

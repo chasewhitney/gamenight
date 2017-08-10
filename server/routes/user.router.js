@@ -11,6 +11,7 @@ router.get('/', function(req, res) {
     var userInfo = {
       username : req.user.username,
       location : req.user.location,
+      email: req.user.email,
     };
     res.send(userInfo);
   } else {
