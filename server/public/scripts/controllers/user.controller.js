@@ -26,17 +26,10 @@ myApp.controller('UserController', function(UserService, EventService, $http, $l
 
   vm.newEvent = {};
   vm.newEvent.games = [];
-  vm.eventArray = [];
 
 
-  vm.getEvents = function(){
-    $http.get('/event/search').then(function(response){
-        console.log('mongooseTest GET response:', response);
-        vm.eventArray = response.data;
-        console.log('eventArray is: ', vm.eventArray);
 
-      });
-  };
+
 
   vm.mongooseTest = function(){
     console.log('in mongooseTest');
@@ -76,7 +69,8 @@ vm.states = ('AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI 
           return {abbrev: state};
         });
 
-    vm.getEvents();
+    vm.eventService.getEvents();
+    vm.eventService.getMyEvents();
 
 vm.test = function(){
   console.log('vm.userObject is: ',vm.userObject);

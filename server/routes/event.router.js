@@ -5,6 +5,33 @@ var User = require('../models/user.js');
 var path = require('path');
 
 
+alterData = function(data, name){
+  console.log('alterData received: ', data);
+  var newData = data;
+  console.log('newData in alterData is: ', newData);
+  for (var i = 0; i < newData.length; i++){
+    newData[i].newpropertything= 'WHATEVER';
+    console.log('in alterData for loop');
+    if (newData[i].admin.includes(name)){
+      console.log('test true for admin.includes in alterData');
+      newData[i].status = "admin";
+      console.log('newData[i] after status change is:', newData[i]);
+    } else if(newData[i].attending.includes(name)){
+        newData[i].status = "attending";
+    } else if(newData[i].denied.includes(name)){
+        newData[i].status = "denied";
+    } else if(newData[i].pending.includes(name)){
+        newData[i].status = "pending";
+    }
+
+
+  }
+
+  console.log('alterData returning: ', newData);
+  return newData;
+};
+
+
 // Get search results based on filter sent by user
 router.get('/search/:searchParam', function(req, res) {
   var searchParam = req.params.searchParam;
@@ -32,6 +59,7 @@ router.get('/myevents/', function(req, res) {
          { pending: name },
          { attending: name },
          { saved: name },
+         { admin: name },
      ]
 }).exec(
     function(err, data) {
@@ -40,6 +68,7 @@ router.get('/myevents/', function(req, res) {
         res.sendStatus(500);
       } else {
         console.log('MYEVENTS GET RESULTS:', data);
+        data = alterData(data, name);
         res.send(data);
       }
   });

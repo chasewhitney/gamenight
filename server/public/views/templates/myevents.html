@@ -3,6 +3,24 @@
   <p>
     Viewing My Events!
   </p>
+<div ng-show="admEvent.status == 'admin'" ng-repeat="admEvent in uc.eventService.myEvents">
+  TITLE: {{admEvent.title}} - STATUS: ADMIN
+  <p ng-show="admEvent.pending.length > 0" >
+    Pending requests from: <span ng-repeat="requester in admEvent.pending">(  {{requester}}  )</span>
+  </p>
+</div>
+<div ng-show="attEvent.status == 'attending'" ng-repeat="attEvent in uc.eventService.myEvents">
+  TITLE: {{attEvent.title}} - STATUS: ATTENDING
+</div>
+<div ng-show="penEvent.status == 'pending'" ng-repeat="penEvent in uc.eventService.myEvents">
+  TITLE: {{penEvent.title}} - STATUS: PENDING
+</div>
+<div ng-show="savEvent.status == 'saved'" ng-repeat="savEvent in uc.eventService.myEvents">
+  TITLE: {{savEvent.title}} - STATUS: SAVED
+</div>
+
+
+
 
   <button type="button" name="button" ng-click="uc.eventService.getMyEvents()">TEST</button>
 </div>

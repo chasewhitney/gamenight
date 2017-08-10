@@ -10,10 +10,10 @@
 
   <div class="midContainer" flex="80">
 
-    <ng-map zoom="13" center="zip code {{uc.searchZip}}" style="height:600px"
+    <!-- <ng-map zoom="13" center="zip code {{uc.searchZip}}" style="height:600px"
     on-center-changed="centerCustomMarker()">
-    <marker ng-repeat="item in uc.eventArray" position="{{item.address +  ', ' + item.city +  ', ' + item.state +  ', ' + item.zipCode}}" on-click="map.showInfoWindow(event, '{{item._id}}')"></marker>
-    <info-window ng-repeat="thing in uc.eventArray" id="{{thing._id}}" max-width="200">
+    <marker ng-repeat="item in uc.eventArray" position="{{item.address +  ', ' + item.city +  ', ' + item.state +  ', ' + item.zipCode}}" on-click="map.showInfoWindow(event, 'marker-info')"></marker>
+    <info-window id="marker-info" max-width="200">
       <div class="infoWindow">
         <div></div>
         <h1>{{thing.title}}</h1>
@@ -24,6 +24,21 @@
           <button type="button" name="button" ng-click="uc.eventService.goToEvent(thing)">View Event</button>
 
         </div>
+      </div>
+    </info-window>
+  </ng-map> -->
+
+
+  <ng-map style="height:600px"
+  on-center-changed="centerCustomMarker()" center="zip code {{uc.searchZip}}" zoom="13">
+    <marker id="{{item._id}}" position="{{item.address +  ', ' + item.city +  ', ' + item.state +  ', ' + item.zipCode}}" ng-repeat="item in uc.eventService.eventArray" on-click="uc.eventService.showDetail(item)">
+    </marker>
+
+    <info-window id="foo-iw">
+      <div ng-non-bindable="">
+        TITLE: {{uc.eventService.event.title}}
+        DESCRIPTION: {{uc.eventService.event.description}}
+        <button type="button" name="button" ng-click="uc.eventService.goToEvent(uc.eventService.event)">View Event</button>
       </div>
     </info-window>
   </ng-map>
