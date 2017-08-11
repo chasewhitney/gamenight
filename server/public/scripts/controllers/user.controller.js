@@ -74,7 +74,14 @@ vm.states = ('AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI 
 
 vm.test = function(){
   console.log('vm.userObject is: ',vm.userObject);
-}
+  $http.get('/event/test').then(function(response){
+    console.log('TEST RESPONSE IS:', response);
+var position = response.data.results[0].geometry.location;
+var addy = response.data.results[0].formatted_address;
+    console.log('POSITION IS:', position);
+    console.log('ADDRESS IS:', addy);
+  });
+};
 
 
 });

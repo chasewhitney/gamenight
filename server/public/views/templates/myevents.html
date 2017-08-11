@@ -6,7 +6,7 @@
 <div ng-show="admEvent.status == 'admin'" ng-repeat="admEvent in uc.eventService.myEvents">
   TITLE: {{admEvent.title}} - STATUS: ADMIN
   <p ng-show="admEvent.pending.length > 0" >
-    Pending requests from: <span ng-repeat="requester in admEvent.pending">(  {{requester}}  )</span>
+    Pending requests from: <span ng-repeat="requester in admEvent.pending">(  {{requester}}  )<button type="button" name="button" ng-click="uc.eventService.approveRequest(admEvent._id, requester)">Approve</button></span>
   </p>
 </div>
 <div ng-show="attEvent.status == 'attending'" ng-repeat="attEvent in uc.eventService.myEvents">

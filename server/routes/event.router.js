@@ -3,14 +3,16 @@ var router = express.Router();
 var Event = require('../models/event.js');
 var User = require('../models/user.js');
 var path = require('path');
+var request = require('request');
 
 
+// gives status tag to returned events for My Events page
 alterData = function(data, name){
   console.log('alterData received: ', data);
   var newData = data;
   console.log('newData in alterData is: ', newData);
   for (var i = 0; i < newData.length; i++){
-    newData[i].newpropertything= 'WHATEVER';
+    newData[i].newpropertything= 'SOMETHING';
     console.log('in alterData for loop');
     if (newData[i].admin.includes(name)){
       console.log('test true for admin.includes in alterData');
@@ -23,13 +25,26 @@ alterData = function(data, name){
     } else if(newData[i].pending.includes(name)){
         newData[i].status = "pending";
     }
-
-
   }
 
   console.log('alterData returning: ', newData);
   return newData;
 };
+
+
+pendingToAttending = function(event, requester){
+  console.log('requester in pendingToAttending is:', requester);
+  console.log('event in pendingToAttending is:', event);
+  var newEvent = event;
+
+  var index = newEvent.pending.indexOf(requester);
+  newEvent.pending.splice(index, 1);
+  newEvent.attending.push(requester);
+
+
+  return newEvent;
+};
+
 
 
 // Get search results based on filter sent by user
@@ -98,34 +113,61 @@ router.post('/createEvent', function(req, res) {
     var addEvent = new Event(req.body);
     addEvent.host = req.user.username;
     // insert into our collection
-    addEvent.save(function(err, data) {
-      console.log('saved data:', data);
-      if(err) {
-        console.log('save error: ', err);
-        res.sendStatus(500);
-      } else {
+    var newData={};
+    var newAddress = addEvent.address.replace(/ /g, "+");
+    console.log('newAddress is:', newAddress);
+    var newCity = addEvent.city.replace(/ /g, "+");
+    console.log('newCity is: ', newCity);
+    var geoUrl = {
+      url: 'http://maps.google.com/maps/api/geocode/json?address=' + newAddress + ',+' + newCity + ',+'+ addEvent.state,
+    };
 
-        Event.findById(data._id,
-        function(err, event) {
+    console.log('geoUrl.url is: ', geoUrl.url);
+    request(geoUrl, function (error, response, body) {
+    if (response && response.statusCode == 200) {
+
+      newData = JSON.parse(body);
+
+      console.log('newData is:', newData);
+      //console.log('newData[0] is:', newData[0]);
+      console.log('newData.results[0] is:', newData.results[0]);
+      addEvent.position[0] = newData.results[0].geometry.location.lat;
+      addEvent.position[1] = newData.results[0].geometry.location.lng;
+      addEvent.location = newData.results[0].formatted_address;
+
+        addEvent.save(function(err, data) {
+          console.log('saved data:', data);
           if(err) {
+            console.log('save error: ', err);
             res.sendStatus(500);
           } else {
-            console.log('success. in add to admin! Found:', event);
-              event.admin.push(req.user.username);
-            event.save(function(err){
+
+            Event.findById(data._id,
+            function(err, event) {
               if(err) {
                 res.sendStatus(500);
               } else {
-                res.sendStatus(201);
+                console.log('success. in add to admin! Found:', event);
+                  event.admin.push(req.user.username);
+                event.save(function(err){
+                  if(err) {
+                    res.sendStatus(500);
+                  } else {
+                    res.sendStatus(201);
+                  }
+                })
               }
-            })
+          });
+
+
+
           }
-      });
+        });
+    } else {
+      res.sendStatus(500);
+    }
+  });
 
-
-
-      }
-    });
   });
 
 
@@ -176,11 +218,61 @@ router.post('/createEvent', function(req, res) {
             } else {
               res.sendStatus(201);
             }
-          })
+          });
         }
-    }); // end findOne
+      }); // end findOne
     });
 
+
+
+/// --- IN PROGRESS --- ///
+// approves requester to attend event. Removes requester from pending and adds to attending
+router.put('/approverequest/:id',function(req, res){
+  var eventId = req.params.id;
+  var requester = req.body.requester;
+  console.log('eventId in requestattend is:', eventId);
+  console.log('requester in requestattend is:', requester);
+
+  //remove requester from events pending list
+  //add requester to attending list
+
+  Event.findById(eventId,
+  function(err, event) {
+    if(err) {
+      res.sendStatus(500);
+    } else {
+      console.log('success. in requestattend! Found:', event);
+      event = pendingToAttending(event, requester);
+
+      event.save(function(err){
+        if(err) {
+          res.sendStatus(500);
+        } else {
+          res.sendStatus(201);
+        }
+      })
+    }
+  });
+});
+
+var repo_options = {
+  url: 'http://maps.google.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA',
+  // headers: {
+  //   'User-Agent': 'request',
+  //   'Authorization': 'token ' + oauthToken
+  // }
+};
+
+
+router.get('/test', function(req, res){
+  request(repo_options, function (error, response, body) {
+    if (response && response.statusCode == 200) {
+      res.send(body);
+    } else {
+      res.sendStatus(500);
+    }
+  });
+});
 
 router.get('/', function(req, res, next) {
   console.log('get /register route');

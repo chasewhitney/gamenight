@@ -26,6 +26,7 @@ ev.event = ev.eventArray[0];
 ev.showDetail = function(e, event) {
   ev.event = event;
   console.log('event in showDetail is: ', event);
+  console.log('event._id in showDetail is: ', event._id);
   ev.map.showInfoWindow('foo-iw', event._id);
 };
 
@@ -99,6 +100,21 @@ ev.getEvents = function(){
 ev.test = function(e, dingle){
   console.log('TEST RECEIVED: ', dingle);
 };
+
+
+// admin approves pending request
+ev.approveRequest = function(eventId, requester){
+  console.log('in approveRequest');
+  console.log('requester is:',requester);
+  console.log('eventId is:', eventId);
+  $http.put('/event/approverequest/' + eventId, {requester:requester}).then(function(response){
+    console.log('got response from approveRequest PUT');
+    ev.getMyEvents();
+  });
+
+
+};
+
 
 return ev;
 

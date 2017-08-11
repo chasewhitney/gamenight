@@ -13,6 +13,8 @@ var EventSchema = new Schema({
     state: {type: String, required: true},
     zipCode: {type: String, required: true},
     description: {type: String, required: true},
+    position:{type: Array},
+    location:{type: String},
     status: {type: String},
     admin: {type: Array},
     saved: {type: Array},
