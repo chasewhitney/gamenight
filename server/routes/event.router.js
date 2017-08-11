@@ -24,6 +24,8 @@ alterData = function(data, name){
         newData[i].status = "denied";
     } else if(newData[i].pending.includes(name)){
         newData[i].status = "pending";
+    } else if(newData[i].saved.includes(name)){
+        newData[i].status = "saved";
     }
   }
 
