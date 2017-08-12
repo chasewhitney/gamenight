@@ -1,0 +1,30 @@
+<div ng-include="'views/partials/nav.html'"></div>
+<div class="container">
+  <p>
+    Edit My Profile
+  </p>
+  <p>
+    Name: <input type="text" name="" ng-model="uc.userObject.name" value="{{uc.userObject.name}}" />
+  </p>
+  <p>
+    Age: <input type="text" name="" ng-model="uc.userObject.age" value="{{uc.userObject.age}}" />
+  </p>
+  <p>
+    Gender: <input type="text" name="" ng-model="uc.userObject.gender" value="{{uc.userObject.gender}}" />
+  </p>
+  <p>
+    Location: <input type="text" name="" ng-model="uc.userObject.location" value="{{uc.userObject.location}}" />
+  </p>
+  <p>
+    Favorite Games: <input type="text" name="" ng-model="uc.userObject.favoriteGames" value="{{uc.userObject.favoriteGames}}" />
+  </p>
+  <p>
+    Contact Info: <input type="text" name="" ng-model="uc.userObject.contactInfo" value="{{uc.userObject.contactInfo}}" />
+  </p>
+  <p>
+    About Me: <input type="text" name="" ng-model="uc.userObject.aboutMe" value="{{uc.userObject.aboutMe}}" />
+  </p>
+
+  <button type="button" name="button" ng-click="uc.updateUserProfile()">Update</button>
+  <button type="button" name="button" ng-click="uc.test()">TEST</button>
+</div>

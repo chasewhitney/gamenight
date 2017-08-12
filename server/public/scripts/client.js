@@ -31,6 +31,15 @@ myApp.config(function($routeProvider, $locationProvider, $mdIconProvider) {
         }
       }
     })
+    .when('/editmyprofile', {
+      templateUrl: '/views/templates/editmyprofile.html',
+      controller: 'UserController as uc',
+      resolve: {
+        getuser : function(UserService){
+          return UserService.getuser();
+        }
+      }
+    })
     .when('/info', {
       templateUrl: '/views/templates/info.html',
       controller: 'InfoController',

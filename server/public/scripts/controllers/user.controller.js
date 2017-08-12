@@ -27,7 +27,13 @@ myApp.controller('UserController', function(UserService, EventService, $http, $l
   vm.newEvent = {};
   vm.newEvent.games = [];
 
-
+  vm.updateUserProfile = function(){
+    console.log('in updateUserProfile');
+    console.log('sending vm.userObject', vm.userObject);
+    $http.put('/user/updateprofile', {user : vm.userObject}).then(function(response){
+      console.log('got response from updateUserProfile PUT');
+    });
+  };
 
 
 
@@ -74,13 +80,7 @@ vm.states = ('AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI 
 
 vm.test = function(){
   console.log('vm.userObject is: ',vm.userObject);
-  $http.get('/event/test').then(function(response){
-    console.log('TEST RESPONSE IS:', response);
-var position = response.data.results[0].geometry.location;
-var addy = response.data.results[0].formatted_address;
-    console.log('POSITION IS:', position);
-    console.log('ADDRESS IS:', addy);
-  });
+
 };
 
 

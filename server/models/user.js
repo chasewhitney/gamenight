@@ -8,6 +8,16 @@ var UserSchema = new Schema({
     username: {type: String, required: true, index: {unique: true}},
     password: {type: String, required: true},
     email: {type: String, required: true, unique: true},
+    location: {type: String},
+    name: {type: String},
+    age: {type: Number},
+    gender: {type: String},
+    favoriteGames: {type: String},
+    contactInfo: {type: String},
+    aboutMe: {type: String},
+    facebook: {type: String},
+    twitter: {type: String},
+    instagram: {type: String},
 });
 
 // Called before adding a new user to the DB. Encrypts password.

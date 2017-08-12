@@ -13,9 +13,19 @@ myApp.factory('UserService', function($http, $location){
       $http.get('/user').then(function(response) {
           if(response.data.username) {
               // user has a curret session on the server
-              userObject.userName = response.data.username;
+              userObject.userName = response.data.username;              
               userObject.email = response.data.email;
-              userObject.location = response.data.location
+              userObject.name = response.data.name;
+              userObject.location = response.data.location;
+              userObject.age = response.data.age;
+              userObject.gender = response.data.gender;
+              userObject.favoriteGames = response.data.favoriteGames;
+              userObject.contactInfo = response.data.contactInfo;
+              userObject.aboutMe = response.data.aboutMe;
+
+
+
+
               console.log('RESPONSE.DATA:', response.data);
               console.log('UserService -- getuser -- User Data: ', userObject.userName);
           } else {
