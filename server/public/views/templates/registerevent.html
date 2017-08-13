@@ -46,7 +46,7 @@
                   <input ng-model="uc.newEvent.time">
                 </md-input-container>
               </div>
-              
+
               <md-input-container class="md-block">
                 <label>Address</label>
                 <input ng-model="uc.newEvent.address">
@@ -92,10 +92,11 @@
             </form>
 
           </div>
-          <md-button style="float:right" type="button" name="button" class="md-raised md-primary" ng-click="uc.createEvent()">SUBMIT!</md-button>
+          <a href="#/myevents"><md-button style="float:right" type="button" name="button" class="md-raised md-primary" ng-click="uc.createEvent()">Submit</md-button></a>
+          <a href="#/myevents"><md-button style="float:right" type="button" name="button" class="md-raised md-primary">Cancel</md-button></a>
         </md-content>
 
       </div>
-      <md-button style="float:right" type="button" name="button" class="md-raised md-primary" ng-click="uc.testEvent()">TEST!</md-button>
+
 
 </div>

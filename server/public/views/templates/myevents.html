@@ -4,7 +4,38 @@
   <p>
     Viewing My Events!
   </p>
-<div ng-show="admEvent.status == 'admin'" ng-repeat="admEvent in uc.eventService.myEvents">
+
+  <div flex-xs flex-gt-xs="80" layout="column" class="pageContainer">
+    <md-card>
+      <md-card-title style="background-color:yellow">
+
+        <md-card-title-media>
+          <div class="card-media" style="height:250px;width:250px;margin-right:10px"></div>
+        </md-card-title-media>
+
+        <md-card-title-text style="background-color:yellow">
+          <span class="md-headline">Title</span>
+          <span class="md-subhead">Date at Time</span>
+          <span class="md-subhead">Games</span>
+          <span class="md-subhead">Description</span>
+        </md-card-title-text>
+        <div>
+          <p style="font-size:24px;margin-top:-10px">HOSTING</p>
+          <p style="margin-top:-20px;text-align:right">Status: Open</p>
+        </div>
+      </md-card-title>
+      <md-card-actions layout="row" layout-align="end center">
+        <md-button>Action 1</md-button>
+        <md-button>Action 2</md-button>
+      </md-card-actions>
+    </md-card>
+
+  </div>
+
+</div>
+
+
+<!-- <div ng-show="admEvent.status == 'admin'" ng-repeat="admEvent in uc.eventService.myEvents">
   TITLE: {{admEvent.title}} - STATUS: ADMIN
   <p ng-show="admEvent.pending.length > 0" >
     Pending requests from: <span ng-repeat="requester in admEvent.pending">(  {{requester}}  )<button type="button" name="button" ng-click="uc.eventService.approveRequest(admEvent._id, requester)">Approve</button></span>
@@ -24,4 +55,4 @@
 
 
   <button type="button" name="button" ng-click="uc.eventService.getMyEvents()">TEST</button>
-</div>
+</div> -->
