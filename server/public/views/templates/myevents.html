@@ -6,7 +6,8 @@
   </p>
 
   <div flex-xs flex-gt-xs="80" layout="column" class="pageContainer">
-    <md-card>
+    <!-- HOSTING -->
+    <md-card ng-show="admEvent.status == 'admin'" ng-repeat="admEvent in uc.eventService.myEvents">
       <md-card-title style="background-color:yellow">
 
         <md-card-title-media>
@@ -14,13 +15,113 @@
         </md-card-title-media>
 
         <md-card-title-text style="background-color:yellow">
-          <span class="md-headline">Title</span>
-          <span class="md-subhead">Date at Time</span>
-          <span class="md-subhead">Games</span>
-          <span class="md-subhead">Description</span>
+          <span class="md-headline">{{admEvent.title}}</span>
+          <span class="md-subhead">{{admEvent.date}} at {{admEvent.time}}</span>
+          <span class="md-subhead">{{admEvent.games}}</span>
+          <span class="md-subhead">{{admEvent.description}}</span>
         </md-card-title-text>
         <div>
           <p style="font-size:24px;margin-top:-10px">HOSTING</p>
+          <p style="margin-top:-20px;text-align:right">Status: Open</p>
+        </div>
+      </md-card-title>
+      <md-card-actions layout="row" layout-align="end center">
+        <md-button>Action 1</md-button>
+        <md-button>Action 2</md-button>
+      </md-card-actions>
+    </md-card>
+
+    <!-- ATTENDING -->
+    <md-card ng-show="attEvent.status == 'attending'" ng-repeat="attEvent in uc.eventService.myEvents">
+      <md-card-title style="background-color:green">
+
+        <md-card-title-media>
+          <div class="card-media" style="height:250px;width:250px;margin-right:10px"></div>
+        </md-card-title-media>
+
+        <md-card-title-text style="background-color:green">
+          <span class="md-headline">{{attEvent.title}}</span>
+          <span class="md-subhead">{{attEvent.date}} at {{attEvent.time}}</span>
+          <span class="md-subhead">{{attEvent.games}}</span>
+          <span class="md-subhead">{{attEvent.description}}</span>
+        </md-card-title-text>
+        <div>
+          <p style="font-size:24px;margin-top:-10px">ATTENDING</p>
+          <p style="margin-top:-20px;text-align:right">Status: Open</p>
+        </div>
+      </md-card-title>
+      <md-card-actions layout="row" layout-align="end center">
+        <md-button>Action 1</md-button>
+        <md-button>Action 2</md-button>
+      </md-card-actions>
+    </md-card>
+
+    <!-- PENDING -->
+    <md-card ng-show="penEvent.status == 'pending'" ng-repeat="penEvent in uc.eventService.myEvents">
+      <md-card-title style="background-color:skyblue">
+
+        <md-card-title-media>
+          <div class="card-media" style="height:250px;width:250px;margin-right:10px"></div>
+        </md-card-title-media>
+
+        <md-card-title-text style="background-color:skyblue">
+          <span class="md-headline">{{penEvent.title}}</span>
+          <span class="md-subhead">{{penEvent.date}} at {{penEvent.time}}</span>
+          <span class="md-subhead">{{penEvent.games}}</span>
+          <span class="md-subhead">{{penEvent.description}}</span>
+        </md-card-title-text>
+        <div>
+          <p style="font-size:24px;margin-top:-10px">PENDING</p>
+          <p style="margin-top:-20px;text-align:right">Status: Open</p>
+        </div>
+      </md-card-title>
+      <md-card-actions layout="row" layout-align="end center">
+        <md-button>Action 1</md-button>
+        <md-button>Action 2</md-button>
+      </md-card-actions>
+    </md-card>
+
+    <!-- SAVED -->
+    <md-card ng-show="savEvent.status == 'saved'" ng-repeat="savEvent in uc.eventService.myEvents">
+      <md-card-title style="background-color:white">
+
+        <md-card-title-media>
+          <div class="card-media" style="height:250px;width:250px;margin-right:10px"></div>
+        </md-card-title-media>
+
+        <md-card-title-text style="background-color:white">
+          <span class="md-headline">{{savEvent.title}}</span>
+          <span class="md-subhead">{{savEvent.date}} at {{savEvent.time}}</span>
+          <span class="md-subhead">{{savEvent.games}}</span>
+          <span class="md-subhead">{{savEvent.description}}</span>
+        </md-card-title-text>
+        <div>
+          <p style="font-size:24px;margin-top:-10px">SAVED</p>
+          <p style="margin-top:-20px;text-align:right">Status: Open</p>
+        </div>
+      </md-card-title>
+      <md-card-actions layout="row" layout-align="end center">
+        <md-button>Action 1</md-button>
+        <md-button>Action 2</md-button>
+      </md-card-actions>
+    </md-card>
+
+    <!-- DENIED -->
+    <md-card ng-show="savEvent.status == 'denied'" ng-repeat="denEvent in uc.eventService.myEvents">
+      <md-card-title style="background-color:red">
+
+        <md-card-title-media>
+          <div class="card-media" style="height:250px;width:250px;margin-right:10px"></div>
+        </md-card-title-media>
+
+        <md-card-title-text style="background-color:red">
+          <span class="md-headline">{{denEvent.title}}</span>
+          <span class="md-subhead">{{denEvent.date}} at {{denEvent.time}}</span>
+          <span class="md-subhead">{{denEvent.games}}</span>
+          <span class="md-subhead">{{denEvent.description}}</span>
+        </md-card-title-text>
+        <div>
+          <p style="font-size:24px;margin-top:-10px">DENIED</p>
           <p style="margin-top:-20px;text-align:right">Status: Open</p>
         </div>
       </md-card-title>

@@ -2,13 +2,13 @@
 <div ng-include="'views/partials/nav.html'"></div>
   <div class="container">
     <p>
-      Register a new event!
+      Edit Event!
     </p>
 
 
 
 
-    <div flex="70" layout="column" ng-cloak class="md-inline-form everything">
+    <div flex="70" layout="column" ng-cloak class="md-inline-form everything md-whiteframe-z1 pageContainer">
 
           <md-content layout-gt-sm="row" layout-padding>
             <div>
@@ -84,17 +84,13 @@
 
               </form>
             </div>
+            <a href="#/viewevent"><md-button style="float:right" type="button" name="button" class="md-raised md-primary" ng-click="uc.eventService.updateEvent()">Save Changes</md-button></a>
+            <a href="#/myevents"><md-button style="float:right" type="button" name="button" class="md-raised md-primary">Cancel</md-button></a>
 
           </md-content>
+
 
         </div>
 
 
   </div>
-
-
-
-
-  <button type="button" name="button" ng-click="uc.eventService.updateEvent()">Save Changes</button>
-
-  <button type="button" name="button" ng-click="uc.mongooseTest()">TEST</button>

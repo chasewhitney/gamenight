@@ -138,3 +138,10 @@ li a:hover {
 
 .card-media {
   background-color: #999999; }
+
+.md-subhead{
+    font-weight: normal;
+    color:black;
+    opacity:1;
+    text-decoration: none;
+}

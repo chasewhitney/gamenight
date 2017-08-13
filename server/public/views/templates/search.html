@@ -30,17 +30,36 @@
   </ng-map> -->
 
 
-  <ng-map style="height:600px"
+  <ng-map style="height:600px;margin-bottom:30px;"
   on-center-changed="centerCustomMarker()" center="zip code {{uc.searchZip}}" zoom="13">
     <!-- position="[{{latitude}}, {{longitude}}]" -->
     <marker id="{{item._id}}" position="{{item.position}}" ng-repeat="item in uc.eventService.eventArray" on-click="uc.eventService.showDetail(item)">
     </marker>
 
-    <info-window id="foo-iw">
+    <info-window id="foo-iw" >
       <div ng-non-bindable="">
-        TITLE: {{uc.eventService.event.title}}
-        DESCRIPTION: {{uc.eventService.event.description}}
-        <button type="button" name="button" ng-click="uc.eventService.goToEvent(uc.eventService.event)">View Event</button>
+        <md-card>
+          <md-card-title>
+
+            <md-card-title-media>
+              <div class="card-media" style="height:150px;width:150px;margin-right:10px"></div>
+            </md-card-title-media>
+
+            <md-card-title-text>
+              <span class="md-headline">{{uc.eventService.event.title}}</span>
+              <span class="md-subhead">{{uc.eventService.event.date}} at {{uc.eventService.event.time}}</span>
+              <span class="md-subhead">{{uc.eventService.event.games}}</span>
+              <span class="md-subhead">{{uc.eventService.event.description}}</span>
+            </md-card-title-text>
+            <div>
+              <p style="font-size:14px;margin-top:-15px">Status: Open</p>
+            </div>
+          </md-card-title>
+          <md-card-actions layout="row" layout-align="end center">
+            <md-button type="button" name="button" ng-click="uc.eventService.goToEvent(uc.eventService.event)">View Event</md-button>
+          </md-card-actions>
+        </md-card>
+
       </div>
     </info-window>
   </ng-map>
