@@ -1,3 +1,4 @@
+<header ng-include="'/views/partials/header.html'"></header>
 <div ng-include="'views/partials/nav.html'"></div>
 <div class="container">
   <p>
@@ -7,7 +8,14 @@
 
 
 
-  <div flex="70" layout="column" ng-cloak class="md-inline-form everything">
+  <div flex="70" layout="column" ng-cloak class="md-inline-form everything md-whiteframe-z1 pageContainer">
+
+
+
+              <div class="inputHeader">
+                <h3>Create New Event</h3>
+              </div>
+
 
         <md-content layout-gt-sm="row" layout-padding>
           <div>
@@ -23,8 +31,8 @@
             <form name="userForm">
 
               <div layout-gt-xs="row">
-                <md-input-container class="md-block" flex-gt-xs>
-                  <label>Enter games then hit enter</label>
+                <md-input-container class="md-block" flex-gt-xs style="padding-bottom: -40px">
+                  <label>Games (Press Enter after each game)</label>
                   <md-chips ng-model="uc.newEvent.games" md-removable="uc.removable"></md-chips>
                 </md-input-container>
 
@@ -38,7 +46,7 @@
                   <input ng-model="uc.newEvent.time">
                 </md-input-container>
               </div>
-
+              
               <md-input-container class="md-block">
                 <label>Address</label>
                 <input ng-model="uc.newEvent.address">
@@ -82,13 +90,12 @@
               </md-input-container>
 
             </form>
-            <button type="button" name="button" ng-click="uc.testEvent()">TEST!</button>
-            <button type="button" name="button" ng-click="uc.createEvent()">SUBMIT!</button>
-          </div>
 
+          </div>
+          <md-button style="float:right" type="button" name="button" class="md-raised md-primary" ng-click="uc.createEvent()">SUBMIT!</md-button>
         </md-content>
 
       </div>
-
+      <md-button style="float:right" type="button" name="button" class="md-raised md-primary" ng-click="uc.testEvent()">TEST!</md-button>
 
 </div>

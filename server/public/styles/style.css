@@ -124,3 +124,14 @@ li a:hover {
   margin-right:auto;
   text-align:center;
 }
+
+.inputHeader{
+  background-color: skyblue;
+  font-size: 34px;
+  text-align:center;
+}
+
+.pageContainer {
+  margin-left:auto;
+  margin-right:auto;
+}

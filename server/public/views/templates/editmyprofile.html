@@ -1,3 +1,4 @@
+<header ng-include="'/views/partials/header.html'"></header>
 <div ng-include="'views/partials/nav.html'"></div>
 <div class="container">
   <p>
@@ -25,6 +26,7 @@
     About Me: <input type="text" name="" ng-model="uc.userObject.aboutMe" value="{{uc.userObject.aboutMe}}" />
   </p>
 
+  <a href="#/myprofile"><button type="button" name="button">Cancel</button></a>
   <button type="button" name="button" ng-click="uc.updateUserProfile()">Update</button>
-  <button type="button" name="button" ng-click="uc.test()">TEST</button>
+
 </div>

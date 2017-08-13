@@ -1,3 +1,4 @@
+<header ng-include="'/views/partials/header.html'"></header>
 <div ng-include="'views/partials/nav.html'"></div>
 <div class="container">
   <p>
@@ -25,5 +26,5 @@
     About Me: {{uc.userObject.aboutMe}}
   </p>
 
-  <button type="button" name="button" ng-click="uc.test()">TEST</button>
+  <a href="#/editmyprofile"><button type="button" name="button">EDIT</button></a>
 </div>
