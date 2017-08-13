@@ -40,6 +40,15 @@ myApp.config(function($routeProvider, $locationProvider, $mdIconProvider) {
         }
       }
     })
+    .when('/editmyevent', {
+      templateUrl: '/views/templates/editmyevent.html',
+      controller: 'UserController as uc',
+      resolve: {
+        getuser : function(UserService){
+          return UserService.getuser();
+        }
+      }
+    })
     .when('/info', {
       templateUrl: '/views/templates/info.html',
       controller: 'InfoController',

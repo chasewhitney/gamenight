@@ -172,6 +172,44 @@ router.post('/createEvent', function(req, res) {
 
   });
 
+//update event information
+  router.put('/updateevent', function(req, res){
+    var newEvent = req.body;
+    console.log('in PUT updateevent with newEvent:', newEvent);
+    var newData = {};
+    var newGeoUrl = {
+      url: 'http://maps.google.com/maps/api/geocode/json?address=' + newEvent.address + ',+' + newEvent.city+ ',+'+ newEvent.state,
+    };
+    request(newGeoUrl, function (error, response, body) {
+    if (response && response.statusCode == 200) {
+
+      newData = JSON.parse(body);
+
+      console.log('newData is:', newData);
+
+      newEvent.position[0] = newData.results[0].geometry.location.lat;
+      newEvent.position[1] = newData.results[0].geometry.location.lng;
+      newEvent.location = newData.results[0].formatted_address;
+
+
+      Event.findByIdAndUpdate({_id: newEvent._id},{title: newEvent.title, date: newEvent.date, time: newEvent.time, address: newEvent.address, city: newEvent.city, state: newEvent.state, zipCode: newEvent.zipCode, description: newEvent.description, games: newEvent.games, position: newEvent.position, location: newEvent.location},
+      function(err, dbEvent) {
+        if(err) {
+          console.log('ERROR in updateprofile: ', err);
+          res.sendStatus(500);
+        } else {
+          console.log('success. in update Event! Found and updated:', dbEvent );
+          res.sendStatus(201);
+        }
+      });
+    }
+     else {
+        res.sendStatus(500);
+    }
+    });
+  });
+
+
 
 // Add user to saved array on event - indicating user has saved the event
   router.put('/addtosaved/:id', function(req,res){

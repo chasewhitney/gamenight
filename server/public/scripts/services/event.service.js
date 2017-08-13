@@ -8,6 +8,7 @@ NgMap.getMap().then(function(map) {
     ev.map = map;
   });
 
+ev.eventToEdit = {};
 ev.eventArray = [];
 ev.userService = UserService;
 ev.userObject = UserService.userObject;
@@ -34,7 +35,12 @@ ev.hideDetail = function() {
   ev.map.hideInfoWindow('foo-iw');
 };
 
-
+ev.updateEvent = function(){
+  console.log('in updateEvent');
+  $http.put('/event/updateevent', ev.eventToView).then(function(response){
+    console.log('got response from updateEvent PUT');
+  });
+};
 
 ev.goToEvent = function(viewEvent){
   console.log('goToEvent event is:', viewEvent);
@@ -42,6 +48,10 @@ ev.goToEvent = function(viewEvent){
   $location.path('/viewevent');
 };
 
+ev.goToEditEvent = function(viewEvent){
+  console.log('goToEditEvent event is:', viewEvent);
+  $location.path('/editmyevent');
+};
 
 // add event to saved events
 ev.addToSaved = function(){
@@ -114,6 +124,9 @@ ev.approveRequest = function(eventId, requester){
 
 
 };
+
+
+
 
 
 return ev;
