@@ -380,6 +380,21 @@ var repo_options = {
   // }
 };
 
+router.delete('/deleteevent/:id', function(req,res){
+  var eventId = req.params.id;
+  console.log('eventId in addtosaved is:', eventId);
+  Event.findByIdAndRemove(eventId,
+  function(err, event) {
+    if(err) {
+      res.sendStatus(500);
+    } else {
+      console.log('success. in add to saved! Found:', event);
+      res.sendStatus(200);
+    }
+}); // end findOne
+});
+
+
 
 router.get('/test', function(req, res){
   request(repo_options, function (error, response, body) {

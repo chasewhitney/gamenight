@@ -222,6 +222,29 @@ ev.createEvent = function(){
     });
 };
 
+ev.deleteEvent = function(eventId){
+  console.log('in deleteEvent with id:', eventId);
+  swal({
+    title: 'Are you sure?',
+    text: "Deleting the event cannot be undone.",
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: "Yes, delete my event!"
+  }).then(function () {
+    $http.delete('/event/deleteevent/' + eventId).then(function(response){
+      console.log('received response from deleteEvent REMOVE');
+      ev.getMyEvents();
+    });
+    swal(
+      'Done!',
+      'Your event has been deleted.',
+      'success'
+    );
+  });
+};
+
 ev.test = function(){
   console.log('IN TEST');
   swal({
