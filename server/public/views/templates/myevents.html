@@ -11,23 +11,24 @@
       <md-card-title style="background-color:yellow">
 
         <md-card-title-media>
-          <div class="card-media" style="height:250px;width:350px;margin-right:10px"></div>
+          <div class="card-media" style="height:250px;width:350px;margin-right:10px" ng-click="uc.eventService.goToEvent(admEvent)"></div>
         </md-card-title-media>
 
         <md-card-title-text style="background-color:yellow">
           <span class="md-headline">{{admEvent.title}}</span>
-          <span class="md-subhead">{{admEvent.date}} at {{admEvent.time}}</span>
-          <span class="md-subhead">{{admEvent.games}}</span>
+          <span class="md-subhead">When: {{admEvent.date | date}} at {{admEvent.time}}</span>
+          <span class="md-subhead">Where: {{admEvent.location}}</span>
+          <span class="md-subhead">Games: {{admEvent.games}}</span><br/>
           <span class="md-subhead">{{admEvent.description}}</span>
         </md-card-title-text>
         <div>
           <p style="font-size:24px;margin-top:-10px">HOSTING</p>
           <p style="margin-top:-20px;text-align:right">Status: Open</p>
+          <p ng-show="admEvent.pending.length > 0" style="text-align:right">(pending requests)</p>
         </div>
       </md-card-title>
       <md-card-actions layout="row" layout-align="end center">
-        <md-button>Action 1</md-button>
-        <md-button>Action 2</md-button>
+        <md-button class="md-raised md-primary" type="button" name="button" ng-click="uc.eventService.goToEditEvent(admEvent)">EDIT</md-button>
       </md-card-actions>
     </md-card>
 
@@ -36,13 +37,14 @@
       <md-card-title style="background-color:green">
 
         <md-card-title-media>
-          <div class="card-media" style="height:250px;width:250px;margin-right:10px"></div>
+          <div class="card-media" style="height:250px;width:350px;margin-right:10px" ng-click="uc.eventService.goToEvent(attEvent)"></div>
         </md-card-title-media>
 
         <md-card-title-text style="background-color:green">
           <span class="md-headline">{{attEvent.title}}</span>
-          <span class="md-subhead">{{attEvent.date}} at {{attEvent.time}}</span>
-          <span class="md-subhead">{{attEvent.games}}</span>
+          <span class="md-subhead">When: {{attEvent.date | date}} at {{attEvent.time}}</span>
+          <span class="md-subhead">Where: {{attEvent.location}}</span>
+          <span class="md-subhead">Games: {{attEvent.games}}</span><br/>
           <span class="md-subhead">{{attEvent.description}}</span>
         </md-card-title-text>
         <div>
@@ -51,8 +53,7 @@
         </div>
       </md-card-title>
       <md-card-actions layout="row" layout-align="end center">
-        <md-button>Action 1</md-button>
-        <md-button>Action 2</md-button>
+<md-button class="md-raised md-primary" type="button" name="button" ng-click="uc.eventService.cancelAttend(attEvent._id)">Cancel Attendance</md-button>
       </md-card-actions>
     </md-card>
 
@@ -61,13 +62,14 @@
       <md-card-title style="background-color:skyblue">
 
         <md-card-title-media>
-          <div class="card-media" style="height:250px;width:250px;margin-right:10px"></div>
+          <div class="card-media" style="height:250px;width:350px;margin-right:10px" ng-click="uc.eventService.goToEvent(penEvent)"></div>
         </md-card-title-media>
 
         <md-card-title-text style="background-color:skyblue">
           <span class="md-headline">{{penEvent.title}}</span>
-          <span class="md-subhead">{{penEvent.date}} at {{penEvent.time}}</span>
-          <span class="md-subhead">{{penEvent.games}}</span>
+          <span class="md-subhead">When: {{penEvent.date | date}} at {{penEvent.time}}</span>
+          <span class="md-subhead">Where: {{penEvent.location}}</span>
+          <span class="md-subhead">Games: {{penEvent.games}}</span><br/>
           <span class="md-subhead">{{penEvent.description}}</span>
         </md-card-title-text>
         <div>
@@ -76,8 +78,7 @@
         </div>
       </md-card-title>
       <md-card-actions layout="row" layout-align="end center">
-        <md-button>Action 1</md-button>
-        <md-button>Action 2</md-button>
+<md-button class="md-raised md-primary" type="button" name="button" ng-click="uc.eventService.cancelRequest(penEvent._id)">Cancel Request</md-button>
       </md-card-actions>
     </md-card>
 
@@ -86,13 +87,14 @@
       <md-card-title style="background-color:white">
 
         <md-card-title-media>
-          <div class="card-media" style="height:250px;width:250px;margin-right:10px"></div>
+          <div class="card-media" style="height:250px;width:350px;margin-right:10px" ng-click="uc.eventService.goToEvent(savEvent)"></div>
         </md-card-title-media>
 
         <md-card-title-text style="background-color:white">
           <span class="md-headline">{{savEvent.title}}</span>
-          <span class="md-subhead">{{savEvent.date}} at {{savEvent.time}}</span>
-          <span class="md-subhead">{{savEvent.games}}</span>
+          <span class="md-subhead">When: {{savEvent.date | date}} at {{savEvent.time}}</span>
+          <span class="md-subhead">Where: {{savEvent.location}}</span>
+          <span class="md-subhead">Games: {{savEvent.games}}</span><br/>
           <span class="md-subhead">{{savEvent.description}}</span>
         </md-card-title-text>
         <div>
@@ -101,8 +103,8 @@
         </div>
       </md-card-title>
       <md-card-actions layout="row" layout-align="end center">
-        <md-button>Action 1</md-button>
-        <md-button>Action 2</md-button>
+<md-button class="md-raised md-primary" type="button" name="button" ng-click="uc.eventService.requestToAttend(savEvent._id)">Request to Attend</md-button>
+<md-button class="md-raised md-primary" type="button" name="button">Remove from Saved</md-button>
       </md-card-actions>
     </md-card>
 
@@ -111,13 +113,14 @@
       <md-card-title style="background-color:red">
 
         <md-card-title-media>
-          <div class="card-media" style="height:250px;width:250px;margin-right:10px"></div>
+          <div class="card-media" style="height:250px;width:350px;margin-right:10px" ng-click="uc.eventService.goToEvent(denEvent)"></div>
         </md-card-title-media>
 
         <md-card-title-text style="background-color:red">
           <span class="md-headline">{{denEvent.title}}</span>
-          <span class="md-subhead">{{denEvent.date}} at {{denEvent.time}}</span>
-          <span class="md-subhead">{{denEvent.games}}</span>
+          <span class="md-subhead">When: {{denEvent.date | date}} at {{denEvent.time}}</span>
+          <span class="md-subhead">Where: {{denEvent.location}}</span>
+          <span class="md-subhead">Games: {{denEvent.games}}</span><br/>
           <span class="md-subhead">{{denEvent.description}}</span>
         </md-card-title-text>
         <div>
@@ -126,8 +129,7 @@
         </div>
       </md-card-title>
       <md-card-actions layout="row" layout-align="end center">
-        <md-button>Action 1</md-button>
-        <md-button>Action 2</md-button>
+<md-button class="md-raised md-primary" type="button" name="button">Remove from Saved</md-button>
       </md-card-actions>
     </md-card>
 

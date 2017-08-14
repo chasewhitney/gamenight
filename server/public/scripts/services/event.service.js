@@ -90,12 +90,13 @@ ev.getMyEvents = function(){
 
 // request to attend the event that is being viewed
 
-ev.requestToAttend = function(){
-  var id = ev.eventToView._id;
+ev.requestToAttend = function(id){
   console.log('requesting to Attend id:', id);
+  console.log('ev.eventToView is:', ev.eventToView);
   $http.put('/event/requestattend/' + id).then(function(response){
       console.log('got response from addtosaved PUT');
     });
+    ev.getMyEvents();
 };
 
 ev.getEvents = function(){
@@ -125,8 +126,21 @@ ev.approveRequest = function(eventId, requester){
 
 };
 
+ev.cancelAttend = function(eventId){
+  console.log('in cancelAttend with id:', eventId);
+  $http.put('/event/removeattend/' + eventId).then(function(response){
+    console.log('received response from cancelAttend PUT');
+    ev.getMyEvents();
+  });
+};
 
-
+ev.cancelRequest = function(eventId){
+  console.log('in cancelRequest with id:', eventId);
+  $http.put('/event/cancelrequest/' + eventId).then(function(response){
+    console.log('received response from cancelAttend PUT');
+    ev.getMyEvents();
+  });
+};
 
 
 return ev;

@@ -237,7 +237,7 @@ router.post('/createEvent', function(req, res) {
   }); // end findOne
   });
 
-  // Add user to saved array on event - indicating user has saved the event
+  // Add user to pending array on event - indicating user wants to attend the event
     router.put('/requestattend/:id', function(req,res){
       var eventId = req.params.id;
       console.log('eventId in requestattend is:', eventId);
@@ -263,6 +263,57 @@ router.post('/createEvent', function(req, res) {
       }); // end findOne
     });
 
+    // remove user from attend array
+      router.put('/removeattend/:id', function(req,res){
+        var eventId = req.params.id;
+        console.log('eventId in requestattend is:', eventId);
+        Event.findById(eventId,
+        function(err, event) {
+          if(err) {
+            res.sendStatus(500);
+          } else {
+            console.log('success. in requestattend! Found:', event);
+            var index = event.attending.indexOf(req.user.username);
+            event.attending.splice(index, 1);
+
+
+
+            event.save(function(err){
+              if(err) {
+                res.sendStatus(500);
+              } else {
+                res.sendStatus(201);
+              }
+            });
+          }
+        }); // end findOne
+      });
+
+      // remove user from pending array
+        router.put('/cancelrequest/:id', function(req,res){
+          var eventId = req.params.id;
+          console.log('eventId in cancelrequest is:', eventId);
+          Event.findById(eventId,
+          function(err, event) {
+            if(err) {
+              res.sendStatus(500);
+            } else {
+              console.log('success. in cancelrequest! Found:', event);
+              var index = event.pending.indexOf(req.user.username);
+              event.pending.splice(index, 1);
+
+
+
+              event.save(function(err){
+                if(err) {
+                  res.sendStatus(500);
+                } else {
+                  res.sendStatus(201);
+                }
+              });
+            }
+          }); // end findOne
+        });
 
 
 /// --- IN PROGRESS --- ///
