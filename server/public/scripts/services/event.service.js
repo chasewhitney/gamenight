@@ -8,6 +8,15 @@ NgMap.getMap().then(function(map) {
     ev.map = map;
   });
 
+
+  ev.states = ('AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS ' +
+        'MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI ' +
+        'WY').split(' ').map(function(state) {
+            return {abbrev: state};
+          });
+
+ev.newEvent = {};
+ev.newEvent.games = [];
 ev.eventToEdit = {};
 ev.eventArray = [];
 ev.userService = UserService;
@@ -36,7 +45,14 @@ ev.hideDetail = function() {
 };
 
 ev.updateEvent = function(){
-  console.log('in updateEvent');
+  console.log('in updateEvent, sending ev.eventToView: ', ev.eventToView);
+
+  swal(
+    'Event updated!',
+    'This should attract more flies to your web!',
+    'success'
+  );
+
   $http.put('/event/updateevent', ev.eventToView).then(function(response){
     console.log('got response from updateEvent PUT');
   });
@@ -50,6 +66,7 @@ ev.goToEvent = function(viewEvent){
 
 ev.goToEditEvent = function(viewEvent){
   console.log('goToEditEvent event is:', viewEvent);
+  ev.eventToView = viewEvent;
   $location.path('/editmyevent');
 };
 
@@ -93,6 +110,13 @@ ev.getMyEvents = function(){
 ev.requestToAttend = function(id){
   console.log('requesting to Attend id:', id);
   console.log('ev.eventToView is:', ev.eventToView);
+
+  swal(
+    'Request sent!',
+    "Now it's up to the host! (We'll put in a good word.)",
+    'success'
+  )
+
   $http.put('/event/requestattend/' + id).then(function(response){
       console.log('got response from addtosaved PUT');
     });
@@ -108,9 +132,7 @@ ev.getEvents = function(){
     });
 };
 
-ev.test = function(e, dingle){
-  console.log('TEST RECEIVED: ', dingle);
-};
+
 
 
 // admin approves pending request
@@ -128,20 +150,97 @@ ev.approveRequest = function(eventId, requester){
 
 ev.cancelAttend = function(eventId){
   console.log('in cancelAttend with id:', eventId);
-  $http.put('/event/removeattend/' + eventId).then(function(response){
-    console.log('received response from cancelAttend PUT');
-    ev.getMyEvents();
+
+  swal({
+    title: 'Are you sure?',
+    text: "It won't be the same without you.",
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: "I'm not going!"
+  }).then(function () {
+    swal(
+      'Done!',
+      'You are freed of the burden of obligation.',
+      'success'
+    );
+    $http.put('/event/removeattend/' + eventId).then(function(response){
+      console.log('received response from cancelAttend PUT');
+      ev.getMyEvents();
+    });
   });
+
+
 };
 
 ev.cancelRequest = function(eventId){
   console.log('in cancelRequest with id:', eventId);
-  $http.put('/event/cancelrequest/' + eventId).then(function(response){
-    console.log('received response from cancelAttend PUT');
+  swal({
+    title: 'Are you sure?',
+    text: "You can always re-request to attend.",
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: "Yes, cancel my request!"
+  }).then(function () {
+    $http.put('/event/cancelrequest/' + eventId).then(function(response){
+      console.log('received response from cancelRequest PUT');
+      ev.getMyEvents();
+    });
+    swal(
+      'Done!',
+      'Your request to attend as been canceled.',
+      'success'
+    )
+  })
+
+};
+
+ev.removeFromSaved = function(eventId){
+  console.log('in removeFromSaved with id:', eventId);
+  $http.put('/event/removefromsaved/' + eventId).then(function(response){
+    console.log('received response from removeFromSaved PUT');
+
     ev.getMyEvents();
   });
 };
 
+ev.createEvent = function(){
+  console.log('creating event:', ev.newEvent);
+  $http.post('/event/createEvent', ev.newEvent).then(function(response){
+      console.log('createEvent response:', response);
+      swal(
+      'Event created!',
+      'Game on!',
+      'success'
+    );
+    $location.path('/myevents');
+      //if response is success, clear vm.newEvent and redirect to event page
+
+    });
+};
+
+ev.test = function(){
+  console.log('IN TEST');
+  swal({
+    title: 'Are you sure?',
+    text: "You can always re-request to attend.",
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: "Cancel my request!"
+  }).then(function () {
+    swal(
+      'Done!',
+      'Your request to attend as been canceled.',
+      'success'
+    )
+  })
+
+};
 
 return ev;
 

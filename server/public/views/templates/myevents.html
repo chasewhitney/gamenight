@@ -23,7 +23,8 @@
         </md-card-title-text>
         <div>
           <p style="font-size:24px;margin-top:-10px">HOSTING</p>
-          <p style="margin-top:-20px;text-align:right">Status: Open</p>
+          <p ng-show="admEvent.closed" style="margin-top:-20px;text-align:right">Status: Full</p>
+          <p ng-show="!admEvent.closed" style="margin-top:-20px;text-align:right">Status: Open</p>
           <p ng-show="admEvent.pending.length > 0" style="text-align:right">(pending requests)</p>
         </div>
       </md-card-title>
@@ -49,7 +50,8 @@
         </md-card-title-text>
         <div>
           <p style="font-size:24px;margin-top:-10px">ATTENDING</p>
-          <p style="margin-top:-20px;text-align:right">Status: Open</p>
+          <p ng-show="attEvent.closed" style="margin-top:-20px;text-align:right">Status: Full</p>
+          <p ng-show="!attEvent.closed" style="margin-top:-20px;text-align:right">Status: Open</p>
         </div>
       </md-card-title>
       <md-card-actions layout="row" layout-align="end center">
@@ -74,7 +76,8 @@
         </md-card-title-text>
         <div>
           <p style="font-size:24px;margin-top:-10px">PENDING</p>
-          <p style="margin-top:-20px;text-align:right">Status: Open</p>
+          <p ng-show="penEvent.closed" style="margin-top:-20px;text-align:right">Status: Full</p>
+          <p ng-show="!penEvent.closed" style="margin-top:-20px;text-align:right">Status: Open</p>
         </div>
       </md-card-title>
       <md-card-actions layout="row" layout-align="end center">
@@ -99,12 +102,13 @@
         </md-card-title-text>
         <div>
           <p style="font-size:24px;margin-top:-10px">SAVED</p>
-          <p style="margin-top:-20px;text-align:right">Status: Open</p>
+          <p ng-show="savEvent.closed" style="margin-top:-20px;text-align:right">Status: Full</p>
+          <p ng-show="!savEvent.closed" style="margin-top:-20px;text-align:right">Status: Open</p>
         </div>
       </md-card-title>
       <md-card-actions layout="row" layout-align="end center">
 <md-button class="md-raised md-primary" type="button" name="button" ng-click="uc.eventService.requestToAttend(savEvent._id)">Request to Attend</md-button>
-<md-button class="md-raised md-primary" type="button" name="button">Remove from Saved</md-button>
+<md-button class="md-raised md-primary" type="button" name="button" ng-click="uc.eventService.removeFromSaved(savEvent._id)">Remove from Saved</md-button>
       </md-card-actions>
     </md-card>
 
@@ -125,7 +129,8 @@
         </md-card-title-text>
         <div>
           <p style="font-size:24px;margin-top:-10px">DENIED</p>
-          <p style="margin-top:-20px;text-align:right">Status: Open</p>
+          <p ng-show="denEvent.closed" style="margin-top:-20px;text-align:right">Status: Full</p>
+          <p ng-show="!denEvent.closed" style="margin-top:-20px;text-align:right">Status: Open</p>
         </div>
       </md-card-title>
       <md-card-actions layout="row" layout-align="end center">

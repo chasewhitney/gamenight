@@ -17,6 +17,12 @@
                 <input ng-model="uc.eventService.eventToView.title">
               </md-input-container>
             </div>
+
+            <div class="inset" ng-cloak>
+  <md-switch ng-model="uc.eventService.eventToView.closed" aria-label="Switch 1">
+    <span ng-show="!uc.eventService.eventToView.closed">Event open</span><span ng-show="uc.eventService.eventToView.closed">Event full</span>
+  </md-switch>
+</div>
           </md-content>
 
           <md-content layout-padding>
@@ -54,7 +60,7 @@
                   <md-input-container class="md-block" flex-gt-sm>
                     <label>State</label>
                     <md-select ng-model="uc.eventService.eventToView.state">
-                      <md-option ng-repeat="state in uc.states" value="{{state.abbrev}}">
+                      <md-option ng-repeat="state in uc.eventService.states" value="{{state.abbrev}}">
                         {{state.abbrev}}
                       </md-option>
                     </md-select>

@@ -154,3 +154,7 @@ li a:hover {
   font-size:18px;
   margin:10px;
 }
+
+.inset {
+  padding-left: 25px;
+  padding-top: 25px; }

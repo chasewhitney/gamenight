@@ -192,7 +192,7 @@ router.post('/createEvent', function(req, res) {
       newEvent.location = newData.results[0].formatted_address;
 
 
-      Event.findByIdAndUpdate({_id: newEvent._id},{title: newEvent.title, date: newEvent.date, time: newEvent.time, address: newEvent.address, city: newEvent.city, state: newEvent.state, zipCode: newEvent.zipCode, description: newEvent.description, games: newEvent.games, position: newEvent.position, location: newEvent.location},
+      Event.findByIdAndUpdate({_id: newEvent._id},{title: newEvent.title, date: newEvent.date, time: newEvent.time, address: newEvent.address, city: newEvent.city, state: newEvent.state, zipCode: newEvent.zipCode, description: newEvent.description, games: newEvent.games, position: newEvent.position, location: newEvent.location, closed: newEvent.closed},
       function(err, dbEvent) {
         if(err) {
           console.log('ERROR in updateprofile: ', err);
@@ -314,6 +314,32 @@ router.post('/createEvent', function(req, res) {
             }
           }); // end findOne
         });
+
+        // remove user from saved array
+          router.put('/removefromsaved/:id', function(req,res){
+            var eventId = req.params.id;
+            console.log('eventId in removefromsaved is:', eventId);
+            Event.findById(eventId,
+            function(err, event) {
+              if(err) {
+                res.sendStatus(500);
+              } else {
+                console.log('success. in cancelrequest! Found:', event);
+                var index = event.saved.indexOf(req.user.username);
+                event.saved.splice(index, 1);
+
+
+
+                event.save(function(err){
+                  if(err) {
+                    res.sendStatus(500);
+                  } else {
+                    res.sendStatus(201);
+                  }
+                });
+              }
+            }); // end findOne
+          });
 
 
 /// --- IN PROGRESS --- ///

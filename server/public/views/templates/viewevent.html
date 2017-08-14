@@ -25,13 +25,14 @@
         </span>
       </md-card-title-text>
       <div>
-        <p style="font-size:24px;margin-top:-10px">Status: OPEN</p>
+        <p ng-show="uc.eventService.eventToView.closed" style="font-size:24px;margin-top:-10px">EVENT FULL</p>
+        <p ng-show="!uc.eventService.eventToView.closed" style="font-size:24px;margin-top:-10px">EVENT OPEN</p>
       </div>
     </md-card-title>
     <md-card-actions layout="row" layout-align="end center">
       <md-button class="md-raised md-primary" ng-show="!((uc.eventService.eventToView.saved.includes(uc.userObject.userName)) || (uc.eventService.eventToView.admin.includes(uc.userObject.userName)))" type="button" name="button" ng-click="uc.eventService.addToSaved()">Save</md-button>
       <md-button class="md-raised md-primary" ng-show="!((uc.eventService.eventToView.pending.includes(uc.userObject.userName)) || (uc.eventService.eventToView.admin.includes(uc.userObject.userName)) || (uc.eventService.eventToView.attending.includes(uc.userObject.userName)))" type="button" name="button" ng-click="uc.eventService.requestToAttend(uc.eventService.eventToView._id)">Request to Attend</md-button>
-      <md-button class="md-raised md-primary" ng-show="uc.eventService.eventToView.admin.includes(uc.userObject.userName)" type="button" name="button" ng-click="uc.eventService.goToEditEvent()">EDIT</md-button>
+      <md-button class="md-raised md-primary" ng-show="uc.eventService.eventToView.admin.includes(uc.userObject.userName)" type="button" name="button" ng-click="uc.eventService.goToEditEvent(uc.eventService.eventToView)">EDIT</md-button>
     </md-card-actions>
   </md-card>
 </div>
