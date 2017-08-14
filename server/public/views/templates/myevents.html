@@ -11,7 +11,7 @@
       <md-card-title style="background-color:yellow">
 
         <md-card-title-media>
-          <div class="card-media" style="height:250px;width:250px;margin-right:10px"></div>
+          <div class="card-media" style="height:250px;width:350px;margin-right:10px"></div>
         </md-card-title-media>
 
         <md-card-title-text style="background-color:yellow">
@@ -133,10 +133,10 @@
 
   </div>
 
-</div>
 
 
-<!-- <div ng-show="admEvent.status == 'admin'" ng-repeat="admEvent in uc.eventService.myEvents">
+
+<div ng-show="admEvent.status == 'admin'" ng-repeat="admEvent in uc.eventService.myEvents">
   TITLE: {{admEvent.title}} - STATUS: ADMIN
   <p ng-show="admEvent.pending.length > 0" >
     Pending requests from: <span ng-repeat="requester in admEvent.pending">(  {{requester}}  )<button type="button" name="button" ng-click="uc.eventService.approveRequest(admEvent._id, requester)">Approve</button></span>
@@ -156,4 +156,5 @@
 
 
   <button type="button" name="button" ng-click="uc.eventService.getMyEvents()">TEST</button>
-</div> -->
+
+</div>

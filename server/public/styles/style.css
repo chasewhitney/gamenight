@@ -145,3 +145,12 @@ li a:hover {
     opacity:1;
     text-decoration: none;
 }
+.eventHeading{
+  font-size:32px;
+  margin:10px;
+}
+
+.eventSubheading{
+  font-size:18px;
+  margin:10px;
+}
