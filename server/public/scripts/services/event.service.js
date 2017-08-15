@@ -48,8 +48,8 @@ ev.updateEvent = function(){
   console.log('in updateEvent, sending ev.eventToView: ', ev.eventToView);
 
   swal(
+    'This should attract more bugs to your web!',
     'Event updated!',
-    'This should attract more flies to your web!',
     'success'
   );
 
@@ -112,8 +112,8 @@ ev.requestToAttend = function(id){
   console.log('ev.eventToView is:', ev.eventToView);
 
   swal(
-    'Request sent!',
-    "Now it's up to the host! (We'll put in a good word.)",
+    "Now it's up to the host!",
+    "(We'll put in a good word.)",
     'success'
   )
 
@@ -161,8 +161,9 @@ ev.cancelAttend = function(eventId){
     confirmButtonText: "I'm not going!"
   }).then(function () {
     swal(
-      'Done!',
       'You are freed of the burden of obligation.',
+      'You are no longer listed as attending.',
+
       'success'
     );
     $http.put('/event/removeattend/' + eventId).then(function(response){

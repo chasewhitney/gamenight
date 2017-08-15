@@ -1,19 +1,30 @@
 body, html {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 14px;
+  background-image: url(gamebg.jpg);
+}
+
+/*font-family: 'Roboto', sans-serif;*/
+/*font-family: 'Roboto Slab', serif;*/
+h1{
+  font-family: 'Roboto', sans-serif;
 }
 
 .instructions .container h1 {
-  font-size: 32px;
+  font-size: 84px;
   font-weight: 600;
+  text-align:center;
+  font-family: 'Roboto Slab', serif;
+  margin:10px;
+  margin-top: 20px;
 }
 
 .instructions {
   background-color: #333333;
   color: #DDDDDD;
-  padding: 15px;
+  padding: 5px;
 }
 
 #entryForm {
@@ -145,14 +156,17 @@ li a:hover {
     opacity:1;
     text-decoration: none;
 }
-.eventHeading{
-  font-size:32px;
-  margin:10px;
-}
 
 .eventSubheading{
   font-size:18px;
+}
+
+.eventSubheading div{
   margin:10px;
+}
+
+.eventSubheading span{
+  color:red;
 }
 
 .inset {

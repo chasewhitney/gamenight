@@ -7,25 +7,25 @@
 
   <div flex-xs flex-gt-xs="80" layout="column" class="pageContainer">
     <!-- HOSTING -->
-    <md-card ng-show="admEvent.status == 'admin'" ng-repeat="admEvent in uc.eventService.myEvents">
+    <md-card class="md-whiteframe-3dp" ng-show="admEvent.status == 'admin'" ng-repeat="admEvent in uc.eventService.myEvents">
       <md-card-title style="background-color:yellow">
 
         <md-card-title-media>
           <div class="card-media" style="height:250px;width:350px;margin-right:10px" ng-click="uc.eventService.goToEvent(admEvent)"></div>
         </md-card-title-media>
 
-        <md-card-title-text style="background-color:yellow">
+        <md-card-title-text style="background-color:yellow;">
           <span class="md-headline">{{admEvent.title}}</span>
           <span class="md-subhead">When: {{admEvent.date | date}} at {{admEvent.time}}</span>
           <span class="md-subhead">Where: {{admEvent.location}}</span>
           <span class="md-subhead">Games: {{admEvent.games}}</span><br/>
           <span class="md-subhead">{{admEvent.description}}</span>
         </md-card-title-text>
-        <div>
+        <div style="text-align:right">
           <p style="font-size:24px;margin-top:-10px">HOSTING</p>
-          <p ng-show="admEvent.closed" style="margin-top:-20px;text-align:right">Status: Full</p>
-          <p ng-show="!admEvent.closed" style="margin-top:-20px;text-align:right">Status: Open</p>
-          <p ng-show="admEvent.pending.length > 0" style="text-align:right">(pending requests)</p>
+          <p ng-show="admEvent.closed" style="margin-top:-20px;color:red">Status: Full</p>
+          <p ng-show="!admEvent.closed" style="margin-top:-20px;color:green">Status: Open</p>
+          <p ng-show="admEvent.pending.length > 0">(pending requests)</p>
         </div>
       </md-card-title>
       <md-card-actions layout="row" layout-align="end center">
@@ -35,7 +35,7 @@
     </md-card>
 
     <!-- ATTENDING -->
-    <md-card ng-show="attEvent.status == 'attending'" ng-repeat="attEvent in uc.eventService.myEvents">
+    <md-card class="md-whiteframe-3dp" ng-show="attEvent.status == 'attending'" ng-repeat="attEvent in uc.eventService.myEvents">
       <md-card-title style="background-color:green">
 
         <md-card-title-media>
@@ -61,7 +61,7 @@
     </md-card>
 
     <!-- PENDING -->
-    <md-card ng-show="penEvent.status == 'pending'" ng-repeat="penEvent in uc.eventService.myEvents">
+    <md-card class="md-whiteframe-3dp" ng-show="penEvent.status == 'pending'" ng-repeat="penEvent in uc.eventService.myEvents">
       <md-card-title style="background-color:skyblue">
 
         <md-card-title-media>
@@ -87,7 +87,7 @@
     </md-card>
 
     <!-- SAVED -->
-    <md-card ng-show="savEvent.status == 'saved'" ng-repeat="savEvent in uc.eventService.myEvents">
+    <md-card class="md-whiteframe-3dp" ng-show="savEvent.status == 'saved'" ng-repeat="savEvent in uc.eventService.myEvents">
       <md-card-title style="background-color:white">
 
         <md-card-title-media>
@@ -103,7 +103,7 @@
         </md-card-title-text>
         <div>
           <p style="font-size:24px;margin-top:-10px">SAVED</p>
-          <p ng-show="savEvent.closed" style="margin-top:-20px;text-align:right">Status: Full</p>
+          <p ng-show="savEvent.closed" style="margin-top:-20px;text-align:right;color:red">Status: Full</p>
           <p ng-show="!savEvent.closed" style="margin-top:-20px;text-align:right">Status: Open</p>
         </div>
       </md-card-title>
@@ -114,7 +114,7 @@
     </md-card>
 
     <!-- DENIED -->
-    <md-card ng-show="savEvent.status == 'denied'" ng-repeat="denEvent in uc.eventService.myEvents">
+    <md-card class="md-whiteframe-3dp" ng-show="savEvent.status == 'denied'" ng-repeat="denEvent in uc.eventService.myEvents">
       <md-card-title style="background-color:red">
 
         <md-card-title-media>
@@ -140,29 +140,5 @@
     </md-card>
 
   </div>
-
-
-
-
-<div ng-show="admEvent.status == 'admin'" ng-repeat="admEvent in uc.eventService.myEvents">
-  TITLE: {{admEvent.title}} - STATUS: ADMIN
-  <p ng-show="admEvent.pending.length > 0" >
-    Pending requests from: <span ng-repeat="requester in admEvent.pending">(  {{requester}}  )<button type="button" name="button" ng-click="uc.eventService.approveRequest(admEvent._id, requester)">Approve</button></span>
-  </p>
-</div>
-<div ng-show="attEvent.status == 'attending'" ng-repeat="attEvent in uc.eventService.myEvents">
-  TITLE: {{attEvent.title}} - STATUS: ATTENDING
-</div>
-<div ng-show="penEvent.status == 'pending'" ng-repeat="penEvent in uc.eventService.myEvents">
-  TITLE: {{penEvent.title}} - STATUS: PENDING
-</div>
-<div ng-show="savEvent.status == 'saved'" ng-repeat="savEvent in uc.eventService.myEvents">
-  TITLE: {{savEvent.title}} - STATUS: SAVED
-</div>
-
-
-
-
-  <button type="button" name="button" ng-click="uc.eventService.getMyEvents()">TEST</button>
 
 </div>
