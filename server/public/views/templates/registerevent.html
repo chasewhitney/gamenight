@@ -19,9 +19,23 @@
 
         <md-content layout-gt-sm="row" layout-padding>
           <div>
+          <div ng-hide="uc.eventService.newEvent.img" class="card-media" style="height:250px;width:350px;margin:15px"></div>
+          <img ng-show="uc.eventService.newEvent.img" ng-src="{{uc.eventService.newEvent.img[0] + uc.eventService.newEvent.img[1]}}" style="max-width:350px"/>
+          <div style="text-align:center"><button type="button" name="button" ng-click="uc.eventService.newEvent.img = uc.eventService.returnPicker()">Upload event image</button></div>
+          </div>
+          <div layout="column">
             <md-input-container>
               <label>Title</label>
               <input ng-model="uc.eventService.newEvent.title">
+            </md-input-container>
+            <md-input-container>
+              <label>Enter date</label>
+              <md-datepicker ng-model="uc.eventService.newEvent.date" md-open-on-focus></md-datepicker>
+            </md-input-container>
+
+            <md-input-container class="md-block">
+              <label>Time</label>
+              <input ng-model="uc.eventService.newEvent.time">
             </md-input-container>
           </div>
         </md-content>
@@ -31,22 +45,16 @@
             <form name="userForm">
 
               <div layout-gt-xs="row">
-                <md-input-container class="md-block" flex-gt-xs style="padding-bottom: -40px">
-                  <label>Games (Press Enter after each game)</label>
-                  <md-chips ng-model="uc.eventService.newEvent.games" md-removable="uc.eventService.removable"></md-chips>
-                </md-input-container>
+                <span style="max-height:20px;margin-top:30px;color:gray">Games:</span>
 
-                <md-input-container>
-                  <label>Enter date</label>
-                  <md-datepicker ng-model="uc.eventService.newEvent.date" md-open-on-focus></md-datepicker>
-                </md-input-container>
+                  <md-chips style="width:100%;margin:10px;" ng-model="uc.eventService.newEvent.games" md-removable="uc.eventService.removable"></md-chips>
 
-                <md-input-container class="md-block">
-                  <label>Time</label>
-                  <input ng-model="uc.eventService.newEvent.time">
-                </md-input-container>
+
+
               </div>
-
+<div style="text-align:center">
+  <span style="max-height:20px;color:gray;margin-left:auto;margin-right:auto;margin-top:-20px;">(Press enter after each game)</span>
+</div>
               <md-input-container class="md-block">
                 <label>Address</label>
                 <input ng-model="uc.eventService.newEvent.address">

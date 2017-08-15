@@ -33,6 +33,31 @@ ev.myRealEvents = {
 
 ev.event = ev.eventArray[0];
 
+ev.client = filestack.init('Asuq5FpJHThCT68CMbHISz');
+
+ev.returnPicker = function() {
+  var newImg = [];
+    ev.client.pick({
+    }).then(function(result) {
+        console.log(JSON.stringify(result.filesUploaded));
+        console.log(result.filesUploaded[0].url);
+
+        console.log('type:', typeof newImg);
+        newImg[0] = "https://cdn.filestackcontent.com/";
+        var temp = result.filesUploaded[0].handle;
+        newImg[1] = temp;
+        console.log('img:', newImg);
+        console.log('type:', typeof newImg);
+        console.log('0:', newImg[0]);
+        console.log('1:', newImg[1]);
+        console.log('type 0:', typeof newImg[0]);
+        console.log('type 1:', typeof newImg[1]);
+
+    });
+    return newImg;
+};
+
+
 ev.showDetail = function(e, event) {
   ev.event = event;
   console.log('event in showDetail is: ', event);
@@ -247,22 +272,7 @@ ev.deleteEvent = function(eventId){
 };
 
 ev.test = function(){
-  console.log('IN TEST');
-  swal({
-    title: 'Are you sure?',
-    text: "You can always re-request to attend.",
-    type: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: "Cancel my request!"
-  }).then(function () {
-    swal(
-      'Done!',
-      'Your request to attend as been canceled.',
-      'success'
-    )
-  })
+  console.log('ev.eventToView.img:',ev.eventToView.img);
 
 };
 

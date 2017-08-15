@@ -23,8 +23,8 @@
         </md-card-title-text>
         <div style="text-align:right">
           <p style="font-size:24px;margin-top:-10px">HOSTING</p>
-          <p ng-show="admEvent.closed" style="margin-top:-20px;color:red">Status: Full</p>
-          <p ng-show="!admEvent.closed" style="margin-top:-20px;color:green">Status: Open</p>
+          <p ng-show="admEvent.closed" style="margin-top:-20px;color:red;font-size:18px">Status: Full</p>
+          <p ng-show="!admEvent.closed" style="margin-top:-20px;color:green;font-size:18px">Status: Open</p>
           <p ng-show="admEvent.pending.length > 0">(pending requests)</p>
         </div>
       </md-card-title>
@@ -51,8 +51,8 @@
         </md-card-title-text>
         <div>
           <p style="font-size:24px;margin-top:-10px">ATTENDING</p>
-          <p ng-show="attEvent.closed" style="margin-top:-20px;text-align:right">Status: Full</p>
-          <p ng-show="!attEvent.closed" style="margin-top:-20px;text-align:right">Status: Open</p>
+          <p ng-show="attEvent.closed" style="margin-top:-20px;text-align:right;color:red;font-size:18px">Status: Full</p>
+          <p ng-show="!attEvent.closed" style="margin-top:-20px;text-align:right;color:green;font-size:18px">Status: Open</p>
         </div>
       </md-card-title>
       <md-card-actions layout="row" layout-align="end center">
@@ -77,8 +77,8 @@
         </md-card-title-text>
         <div>
           <p style="font-size:24px;margin-top:-10px">PENDING</p>
-          <p ng-show="penEvent.closed" style="margin-top:-20px;text-align:right">Status: Full</p>
-          <p ng-show="!penEvent.closed" style="margin-top:-20px;text-align:right">Status: Open</p>
+          <p ng-show="penEvent.closed" style="margin-top:-20px;text-align:right;color:red;font-size:18px">Status: Full</p>
+          <p ng-show="!penEvent.closed" style="margin-top:-20px;text-align:right;color:green;font-size:18px">Status: Open</p>
         </div>
       </md-card-title>
       <md-card-actions layout="row" layout-align="end center">
@@ -103,8 +103,8 @@
         </md-card-title-text>
         <div>
           <p style="font-size:24px;margin-top:-10px">SAVED</p>
-          <p ng-show="savEvent.closed" style="margin-top:-20px;text-align:right;color:red">Status: Full</p>
-          <p ng-show="!savEvent.closed" style="margin-top:-20px;text-align:right">Status: Open</p>
+          <p ng-show="savEvent.closed" style="margin-top:-20px;text-align:right;color:red;font-size:18px">Status: Full</p>
+          <p ng-show="!savEvent.closed" style="margin-top:-20px;text-align:right;color:green;font-size:18px">Status: Open</p>
         </div>
       </md-card-title>
       <md-card-actions layout="row" layout-align="end center">
@@ -130,8 +130,8 @@
         </md-card-title-text>
         <div>
           <p style="font-size:24px;margin-top:-10px">DENIED</p>
-          <p ng-show="denEvent.closed" style="margin-top:-20px;text-align:right">Status: Full</p>
-          <p ng-show="!denEvent.closed" style="margin-top:-20px;text-align:right">Status: Open</p>
+          <p ng-show="denEvent.closed" style="margin-top:-20px;text-align:right;color:red;font-size:18px">Status: Full</p>
+          <p ng-show="!denEvent.closed" style="margin-top:-20px;text-align:right;color:green;font-size:18px">Status: Open</p>
         </div>
       </md-card-title>
       <md-card-actions layout="row" layout-align="end center">

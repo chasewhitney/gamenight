@@ -14,6 +14,7 @@ var EventSchema = new Schema({
     zipCode: {type: String, required: true},
     description: {type: String, required: true},
     closed: {type: Boolean, default: false},
+    img: {type: Array},
     position:{type: Array},
     location:{type: String},
     status: {type: String},

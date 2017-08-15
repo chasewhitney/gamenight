@@ -2,9 +2,61 @@
 <div ng-include="'views/partials/nav.html'"></div>
 <div class="container">
 
-<button type="button" name="button" ng-click="uc.eventService.test();">TEST</button>
+<!-- <button type="button" name="button" ng-click="uc.testVar = uc.test()">TEST</button>
+<button type="button" name="button" ng-click="uc.test2()">TEST2</button>
+<input type="button" value="Upload" ng-click="uc.eventService.returnPicker()" /> <span>Upload an image</span> -->
+
+
 
 <div flex-xs flex-gt-xs="80" layout="column" class="pageContainer">
+  <md-card style="margin-top:20px" class="md-whiteframe-5dp">
+    <div layout="row" style="background-color:red"><h1 style="font-size:48px;text-align:center;margin-left:auto;margin-right:auto;">{{uc.userObject.userName}}</h1></div>
+    <md-card-title>
+
+      <md-card-title-media>
+        <div ng-hide="uc.userObject.img != []" class="card-media" style="height:250px;width:350px;margin-right:10px"></div>
+        <img ng-show="uc.userObject.img != []" ng-src="{{uc.userObject.img[0] + uc.userObject.img[1]}}" style="max-width:350px"/>
+        <div ng-show="uc.editing == true"><input type="button" value="Upload" ng-click="uc.userObject.img = uc.eventService.returnPicker()" /> <span>Upload profile image</span></div>
+      </md-card-title-media>
+
+      <md-card-title-text ng-show="uc.editing == false" class="eventSubheading">
+        <div><span>Name:</span> {{uc.userObject.name}}</div>
+        <div><span>Age:</span> {{uc.userObject.age}}</div>
+        <div><span>Gender:</span> {{uc.userObject.gender}}</div>
+        <div><span>Location:</span> {{uc.userObject.location}}</div>
+        <div><span>Favorite Games:</span> {{uc.userObject.favoriteGames}}</div>
+        <div><span>Contact Me:</span> {{uc.userObject.contactInfo}}</div>
+        <div><span>Description:</span> {{uc.userObject.aboutMe}}</div>
+
+      </md-card-title-text>
+
+      <md-card-title-text ng-show="uc.editing == true" class="eventSubheading">
+
+        <div><span>Name:</span> <input type="text" name="" ng-model="uc.userObject.name" value="{{uc.userObject.name}}" /></div>
+        <div><span>Age:</span> <input type="text" name="" ng-model="uc.userObject.age" value="{{uc.userObject.age}}" /></div>
+        <div><span>Gender:</span> <input type="text" name="" ng-model="uc.userObject.gender" value="{{uc.userObject.gender}}" /></div>
+        <div><span>Location:</span> <input type="text" name="" ng-model="uc.userObject.location" value="{{uc.userObject.location}}" /></div>
+        <div><span>Favorite Games:</span> <input type="text" name="" ng-model="uc.userObject.favoriteGames" value="{{uc.userObject.favoriteGames}}" /></div>
+        <div><span>Contact Me:</span> <input type="text" name="" ng-model="uc.userObject.contactInfo" value="{{uc.userObject.contactInfo}}" /></div>
+        <div><span>Description:</span> <input type="text" name="" ng-model="uc.userObject.aboutMe" value="{{uc.userObject.aboutMe}}" /></div>
+
+      </md-card-title-text>
+
+    </md-card-title>
+    <md-card-actions layout="row" layout-align="end center">
+      <md-button class="md-raised md-primary" ng-show="true" type="button" name="button" ng-click="uc.editProfile()"><span ng-show="uc.editing == false">EDIT</span><span ng-show="uc.editing == true">Cancel</span></md-button>
+      <md-button class="md-raised md-primary" ng-show="uc.editing == true" type="button" name="button" ng-click="uc.updateUserProfile()">Update</md-button>
+    </md-card-actions>
+  </md-card>
+</div>
+
+
+
+
+
+
+
+<!-- <div flex-xs flex-gt-xs="80" layout="column" class="pageContainer">
   <md-card style="margin-top:20px">
     <div layout="row" style="background-color:skyblue"><h1 style="font-size:48px;text-align:center;margin-left:auto;margin-right:auto;">{{uc.userObject.userName}}</h1></div>
     <md-card-title style="background-color:yellow">
@@ -22,9 +74,7 @@
         <span class="eventSubheading">Contact: {{uc.userObject.contactInfo}}</span>
         <span class="eventSubheading">About me: {{uc.userObject.aboutMe}}</span>
       </md-card-title-text>
-      <!-- <div>
-        <p style="font-size:24px;margin-top:-10px">Status: OPEN</p>
-      </div> -->
+
     </md-card-title>
     <md-card-actions layout="row" layout-align="end center">
       <a href="#/editmyprofile"><md-button class="md-raised md-primary" type="button" name="button">EDIT</md-button></a>
@@ -61,5 +111,5 @@
     About Me: {{uc.userObject.aboutMe}}
   </p>
 
-  <a href="#/editmyprofile"><button type="button" name="button">EDIT</button></a>
+  <a href="#/editmyprofile"><button type="button" name="button">EDIT</button></a> -->
 </div>

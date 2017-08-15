@@ -17,11 +17,12 @@ router.put('/updateprofile', function(req,res){
   var newFavoriteGames = data.favoriteGames;
   var newLocation = data.location;
   var newName = data.name;
+  var newImg = data.img;
   console.log('req.body.user.userName is: ', currentUser);
 
 
 
-  Users.findOneAndUpdate({username: currentUser},{contactInfo: newContactInfo, name: newName, age: newAge, gender: newGender, location: newLocation, favoriteGames : newFavoriteGames, aboutMe: newAboutMe},
+  Users.findOneAndUpdate({username: currentUser},{img: newImg, contactInfo: newContactInfo, name: newName, age: newAge, gender: newGender, location: newLocation, favoriteGames : newFavoriteGames, aboutMe: newAboutMe},
   function(err, dbUser) {
     if(err) {
       console.log('ERROR in updateprofile: ', err);
@@ -61,6 +62,7 @@ router.get('/', function(req, res) {
       favoriteGames: req.user.favoriteGames,
       contactInfo: req.user.contactInfo,
       aboutMe: req.user.aboutMe,
+      img: req.user.img,
     };
     res.send(userInfo);
   } else {

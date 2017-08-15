@@ -7,17 +7,27 @@ myApp.controller('UserController', function(UserService, EventService, $http, $l
   vm.userObject = UserService.userObject;
   console.log('UC userObject:', vm.userObject);
 
+  vm.testVar = [];
+
   vm.eventToView = {};
   vm.searchZip = 55420;
+  vm.editing = false;
 
   vm.updateUserProfile = function(){
     console.log('in updateUserProfile');
     console.log('sending vm.userObject', vm.userObject);
     $http.put('/user/updateprofile', {user : vm.userObject}).then(function(response){
       console.log('got response from updateUserProfile PUT');
+      vm.editing = !vm.editing;
     });
   };
 
+  vm.editProfile = function(){
+    console.log('in editProfile');
+    vm.editing = !vm.editing;
+    vm.userService.getuser();
+
+  };
 
 
   vm.mongooseTest = function(){
@@ -51,13 +61,15 @@ vm.testEvent = function(){
     vm.eventService.getMyEvents();
 
 vm.test = function(){
-  console.log('in vm.test');
-  swal(
-  'Oops...',
-  'Something went wrong!',
-  'error'
-);
+  console.log('IN TEST');
+  var newAr = [];
+  newAr[0]= "https://cdn.filestackcontent.com/";
+  newAr[1]="4";
+  return newAr;
+};
 
+vm.test2 = function(x){
+  console.log('EVENT IMAGE:', ev.eventToView.img);
 };
 
 
