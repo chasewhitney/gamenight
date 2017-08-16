@@ -13,7 +13,7 @@
 
       <md-card-title-text class="eventSubheading">
 
-        <div><span>Hosted by:</span> {{uc.eventService.eventToView.host}}</div>
+        <div><span>Hosted by:</span> <span ng-click="uc.eventService.getUserProfile(uc.eventService.eventToView.host)">{{uc.eventService.eventToView.host}}</span></div>
         <div><span>When:</span> {{uc.eventService.eventToView.date | date}} at {{uc.eventService.eventToView.time}}</div>
         <div><span>Location:</span> {{uc.eventService.eventToView.location}}</div>
         <div><span>Games:</span> {{uc.eventService.eventToView.games}}</div>
@@ -22,7 +22,7 @@
         <div><span>Contact host:</span> host@gmail.com</div>
         <div><span>Description:</span> {{uc.eventService.eventToView.description}}</div>
         <div ng-show="((uc.eventService.eventToView.pending.length > 0) && (uc.eventService.eventToView.admin.includes(uc.userObject.userName)))" >
-          <span>Pending requests from: </span><div ng-repeat="requester in uc.eventService.eventToView.pending">(  {{requester}}  )<button type="button" name="button" ng-click="uc.eventService.approveRequest(uc.eventService.eventToView._id, requester)">Approve</button><button type="button" name="button" ng-click="uc.eventService.denyRequest(uc.eventService.eventToView._id, requester)">Deny</button></div>
+          <span>Pending requests from: </span><div ng-repeat="requester in uc.eventService.eventToView.pending"><span ng-click="uc.eventService.getUserProfile(requester)">(  {{requester}}  )</span><button type="button" name="button" ng-click="uc.eventService.approveRequest(uc.eventService.eventToView._id, requester)">Approve</button><button type="button" name="button" ng-click="uc.eventService.denyRequest(uc.eventService.eventToView._id, requester)">Deny</button></div>
         </div>
       </md-card-title-text>
       <div>

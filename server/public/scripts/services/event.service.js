@@ -281,11 +281,13 @@ ev.deleteEvent = function(eventId){
 };
 
 ev.getUserProfile = function(username){
-  console.log('in getUserProfile');
+  console.log('in getUserProfile with username:', username);
   $http.get('/user/userprofile/' + username).then(function(response){
     console.log('received response from getUserProfile GET');
     ev.userToView = response.data;
     console.log('ev.userToView is:', ev.userToView);
+    $location.path('/userprofile');
+
   });
 
 

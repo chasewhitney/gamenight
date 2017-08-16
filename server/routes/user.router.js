@@ -5,8 +5,9 @@ var Users = require('../models/user.js');
 
 alterUser = function(user){
   console.log('in alterUser with user:', user);
-
-
+  delete user.password;
+  delete user.email;
+  return user;
 };
 
 
@@ -61,7 +62,7 @@ router.get('/userprofile/:id', function(req, res) {
 
          { username: userToView}
 
-).exec(
+).lean().exec(
     function(err, data) {
       if(err) {
         console.log('save error: ', err);
