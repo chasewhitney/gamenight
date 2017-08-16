@@ -8,7 +8,6 @@ myApp.controller('UserController', function(UserService, EventService, $http, $l
   console.log('UC userObject:', vm.userObject);
 
   vm.testVar = [];
-
   vm.eventToView = {};
   vm.searchZip = 55420;
   vm.editing = false;
@@ -62,7 +61,7 @@ vm.testEvent = function(){
 
 vm.test = function(){
   console.log('IN TEST');
-  console.log('vm.userObject:', vm.userObject);
+  console.log('vm.testVar:', vm.testVar);
 
 };
 

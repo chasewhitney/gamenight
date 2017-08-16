@@ -33,7 +33,10 @@
   <ng-map style="height:600px;margin-bottom:30px;"
   on-center-changed="centerCustomMarker()" center="zip code {{uc.searchZip}}" zoom="13">
     <!-- position="[{{latitude}}, {{longitude}}]" -->
-    <marker id="{{item._id}}" position="{{item.position}}" ng-repeat="item in uc.eventService.eventArray" on-click="uc.eventService.showDetail(item)" style="max-width:10px"></marker>
+    <marker icon="{{uc.eventService.getMarkerIcon(item.type)}}" id="{{item._id}}" position="{{item.position}}" ng-repeat="item in uc.eventService.eventArray" on-click="uc.eventService.showDetail(item)" style="max-width:10px"></marker>
+<!-- BOARD icon="https://cdn.filestackcontent.com/wB4xspHjRbleGDmjOqQq" -->
+<!-- VIDEO icon="https://cdn.filestackcontent.com/qI8yPkrZTr2mOqx26xmh" -->
+<!-- OUTDOORS icon="https://cdn.filestackcontent.com/Qi4VhBLTZzKUm3Qx9Mug" -->
 
     <info-window id="foo-iw" >
       <div ng-non-bindable="">

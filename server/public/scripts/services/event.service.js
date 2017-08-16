@@ -58,6 +58,17 @@ ev.returnPicker = function() {
 };
 
 
+ev.getMarkerIcon = function(type){
+  switch(type){
+    case "board":
+      return "https://cdn.filestackcontent.com/wB4xspHjRbleGDmjOqQq";
+    case "outdoor":
+      return "https://cdn.filestackcontent.com/Qi4VhBLTZzKUm3Qx9Mug";
+    default:
+      return "https://cdn.filestackcontent.com/qI8yPkrZTr2mOqx26xmh";
+  }
+};
+
 ev.showDetail = function(e, event) {
   ev.event = event;
   console.log('event in showDetail is: ', event);

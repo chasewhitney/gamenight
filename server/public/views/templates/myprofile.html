@@ -3,6 +3,7 @@
 <div class="container">
 
 <button type="button" name="button" ng-click="uc.test()">TEST</button>
+<div ng-show="uc.editing == true"><input type="button" value="Upload" ng-click="uc.testVar = uc.eventService.returnPicker()" /> <span>Upload profile image</span></div>
 <!-- <button type="button" name="button" ng-click="uc.test2()">TEST2</button>
 <input type="button" value="Upload" ng-click="uc.eventService.returnPicker()" /> <span>Upload an image</span> -->
 
