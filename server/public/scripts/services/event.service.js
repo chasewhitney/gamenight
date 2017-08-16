@@ -102,7 +102,9 @@ ev.addToSaved = function(){
   console.log('id :', typeof eid);
   $http.put('/event/addtosaved/' + eid).then(function(response){
       console.log('got response from addtosaved PUT');
+      ev.eventToView.saved.push(ev.userObject.userName);
     });
+
 };
 
 
@@ -144,6 +146,7 @@ ev.requestToAttend = function(id){
 
   $http.put('/event/requestattend/' + id).then(function(response){
       console.log('got response from addtosaved PUT');
+      ev.eventToView.pending.push(ev.userObject.userName);
     });
     ev.getMyEvents();
 };

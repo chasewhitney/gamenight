@@ -33,8 +33,7 @@
   <ng-map style="height:600px;margin-bottom:30px;"
   on-center-changed="centerCustomMarker()" center="zip code {{uc.searchZip}}" zoom="13">
     <!-- position="[{{latitude}}, {{longitude}}]" -->
-    <marker id="{{item._id}}" position="{{item.position}}" ng-repeat="item in uc.eventService.eventArray" on-click="uc.eventService.showDetail(item)">
-    </marker>
+    <marker id="{{item._id}}" position="{{item.position}}" ng-repeat="item in uc.eventService.eventArray" on-click="uc.eventService.showDetail(item)" style="max-width:10px"></marker>
 
     <info-window id="foo-iw" >
       <div ng-non-bindable="">

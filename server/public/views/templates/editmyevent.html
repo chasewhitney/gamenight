@@ -21,8 +21,8 @@
 
           <md-content layout-gt-sm="row" layout-padding>
             <div>
-            <div ng-show="!uc.eventService.eventToView.img" class="card-media" style="height:250px;width:350px;margin:15px"></div>
-            <img ng-show="uc.eventService.eventToView.img" ng-src="{{uc.eventService.eventToView.img[0] + uc.eventService.eventToView.img[1]}}" style="max-width:350px"/>
+            <div ng-hide="uc.eventService.eventToView.img.length > 1" class="card-media" style="height:250px;width:350px;margin:15px"></div>
+            <img ng-show="uc.eventService.eventToView.img.length > 1" ng-src="{{uc.eventService.eventToView.img[0] + uc.eventService.eventToView.img[1]}}" style="max-width:350px"/>
             <div style="text-align:center"><button type="button" name="button" ng-click="uc.eventService.eventToView.img = uc.eventService.returnPicker()">Upload event image</button></div>
             </div>
             <div layout="column">
