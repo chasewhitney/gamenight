@@ -11,7 +11,8 @@
       <md-card-title style="background-color:yellow">
 
         <md-card-title-media>
-          <div class="card-media" style="height:250px;width:350px;margin-right:10px" ng-click="uc.eventService.goToEvent(admEvent)"></div>
+          <img ng-show="admEvent.img.length > 1" ng-src="{{admEvent.img[0] + admEvent.img[1]}}" style="max-width:350px;" ng-click="uc.eventService.goToEvent(admEvent)"/>
+          <div ng-hide="admEvent.img.length > 1" class="card-media" style="height:250px;width:350px;margin-right:10px" ng-click="uc.eventService.goToEvent(admEvent)"></div>
         </md-card-title-media>
 
         <md-card-title-text style="background-color:yellow;">
@@ -39,7 +40,8 @@
       <md-card-title style="background-color:green">
 
         <md-card-title-media>
-          <div class="card-media" style="height:250px;width:350px;margin-right:10px" ng-click="uc.eventService.goToEvent(attEvent)"></div>
+          <img ng-show="attEvent.img.length > 1" ng-src="{{attEvent.img[0] + attEvent.img[1]}}" style="max-width:350px" ng-click="uc.eventService.goToEvent(attEvent)"/>
+          <div ng-hide="attEvent.img.length > 1" class="card-media" style="height:250px;width:350px;margin-right:10px" ng-click="uc.eventService.goToEvent(attEvent)"></div>
         </md-card-title-media>
 
         <md-card-title-text style="background-color:green">
@@ -65,7 +67,8 @@
       <md-card-title style="background-color:skyblue">
 
         <md-card-title-media>
-          <div class="card-media" style="height:250px;width:350px;margin-right:10px" ng-click="uc.eventService.goToEvent(penEvent)"></div>
+          <img ng-show="penEvent.img.length > 1" ng-src="{{penEvent.img[0] + penEvent.img[1]}}" style="max-width:350px" ng-click="uc.eventService.goToEvent(penEvent)"/>
+          <div ng-hide="penEvent.img.length > 1" class="card-media" style="height:250px;width:350px;margin-right:10px" ng-click="uc.eventService.goToEvent(penEvent)"></div>
         </md-card-title-media>
 
         <md-card-title-text style="background-color:skyblue">
@@ -91,7 +94,8 @@
       <md-card-title style="background-color:white">
 
         <md-card-title-media>
-          <div class="card-media" style="height:250px;width:350px;margin-right:10px" ng-click="uc.eventService.goToEvent(savEvent)"></div>
+          <img ng-show="savEvent.img.length > 1" ng-src="{{savEvent.img[0] + savEvent.img[1]}}" style="max-width:350px" ng-click="uc.eventService.goToEvent(savEvent)"/>
+          <div ng-hide="savEvent.img.length > 1" class="card-media" style="height:250px;width:350px;margin-right:10px" ng-click="uc.eventService.goToEvent(savEvent)"></div>
         </md-card-title-media>
 
         <md-card-title-text style="background-color:white">
@@ -114,11 +118,12 @@
     </md-card>
 
     <!-- DENIED -->
-    <md-card class="md-whiteframe-3dp" ng-show="savEvent.status == 'denied'" ng-repeat="denEvent in uc.eventService.myEvents">
+    <md-card class="md-whiteframe-3dp" ng-show="denEvent.status == 'denied'" ng-repeat="denEvent in uc.eventService.myEvents">
       <md-card-title style="background-color:red">
 
         <md-card-title-media>
-          <div class="card-media" style="height:250px;width:350px;margin-right:10px" ng-click="uc.eventService.goToEvent(denEvent)"></div>
+          <img ng-show="denEvent.img.length > 1" ng-src="{{denEvent.img[0] + denEvent.img[1]}}" style="max-width:350px" ng-click="uc.eventService.goToEvent(denEvent)"/>
+          <div ng-hide="denEvent.img.length > 1" class="card-media" style="height:250px;width:350px;margin-right:10px" ng-click="uc.eventService.goToEvent(denEvent)"></div>
         </md-card-title-media>
 
         <md-card-title-text style="background-color:red">

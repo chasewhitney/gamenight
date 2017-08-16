@@ -16,11 +16,7 @@
                 </div>
 
 
-                <!-- <div class="inset" ng-cloak>
-                <md-switch ng-model="uc.eventService.eventToView.closed" aria-label="Switch 1">
-                <span ng-show="!uc.eventService.eventToView.closed">Event open</span><span ng-show="uc.eventService.eventToView.closed">Event full</span>
-                </md-switch>
-                </div> -->
+
 
 
           <md-content layout-gt-sm="row" layout-padding>
@@ -43,6 +39,12 @@
                 <label>Time</label>
                 <input ng-model="uc.eventService.eventToView.time">
               </md-input-container>
+            </div>
+
+            <div class="inset" ng-cloak>
+            <md-switch ng-model="uc.eventService.eventToView.closed" aria-label="Switch 1">
+            <span ng-show="!uc.eventService.eventToView.closed">Event open</span><span ng-show="uc.eventService.eventToView.closed">Event full</span>
+            </md-switch>
             </div>
           </md-content>
 

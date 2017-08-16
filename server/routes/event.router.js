@@ -47,6 +47,19 @@ pendingToAttending = function(event, requester){
   return newEvent;
 };
 
+pendingToDenied = function(event, requester){
+  console.log('requester in pendingToDenied is:', requester);
+  console.log('event in pendingToDenied is:', event);
+  var newEvent = event;
+
+  var index = newEvent.pending.indexOf(requester);
+  newEvent.pending.splice(index, 1);
+  newEvent.denied.push(requester);
+
+
+  return newEvent;
+};
+
 
 
 // Get search results based on filter sent by user
@@ -77,6 +90,7 @@ router.get('/myevents/', function(req, res) {
          { attending: name },
          { saved: name },
          { admin: name },
+         { denied: name },
      ]
 }).exec(
     function(err, data) {
@@ -371,6 +385,37 @@ router.put('/approverequest/:id',function(req, res){
     }
   });
 });
+
+// approves requester to attend event. Removes requester from pending and adds to attending
+router.put('/denyrequest/:id',function(req, res){
+  var eventId = req.params.id;
+  var requester = req.body.requester;
+  console.log('eventId in denyrequest is:', eventId);
+  console.log('requester in denyrequest is:', requester);
+
+  //remove requester from events pending list
+  //add requester to denied list
+
+  Event.findById(eventId,
+  function(err, event) {
+    if(err) {
+      res.sendStatus(500);
+    } else {
+      console.log('success. in denyrequest! Found:', event);
+      event = pendingToDenied(event, requester);
+
+      event.save(function(err){
+        if(err) {
+          res.sendStatus(500);
+        } else {
+          res.sendStatus(201);
+        }
+      });
+    }
+  });
+});
+
+
 
 var repo_options = {
   url: 'http://maps.google.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA',

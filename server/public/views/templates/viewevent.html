@@ -7,7 +7,8 @@
     <md-card-title>
 
       <md-card-title-media>
-        <div class="card-media" style="height:250px;width:350px;margin-right:10px"></div>
+        <img ng-show="uc.eventService.eventToView.img.length > 1" ng-src="{{uc.eventService.eventToView.img[0] + uc.eventService.eventToView.img[1]}}" style="max-width:350px"/>
+        <div ng-hide="uc.eventService.eventToView.img.length > 1" class="card-media" style="height:250px;width:350px;margin-right:10px"></div>
       </md-card-title-media>
 
       <md-card-title-text class="eventSubheading">
@@ -21,7 +22,7 @@
         <div><span>Contact host:</span> host@gmail.com</div>
         <div><span>Description:</span> {{uc.eventService.eventToView.description}}</div>
         <div ng-show="((uc.eventService.eventToView.pending.length > 0) && (uc.eventService.eventToView.admin.includes(uc.userObject.userName)))" >
-          <span>Pending requests from: </span><div ng-repeat="requester in uc.eventService.eventToView.pending">(  {{requester}}  )<button type="button" name="button" ng-click="uc.eventService.approveRequest(uc.eventService.eventToView._id, requester)">Approve</button><button type="button" name="button">Deny</button></div>
+          <span>Pending requests from: </span><div ng-repeat="requester in uc.eventService.eventToView.pending">(  {{requester}}  )<button type="button" name="button" ng-click="uc.eventService.approveRequest(uc.eventService.eventToView._id, requester)">Approve</button><button type="button" name="button" ng-click="uc.eventService.denyRequest(uc.eventService.eventToView._id, requester)">Deny</button></div>
         </div>
       </md-card-title-text>
       <div>

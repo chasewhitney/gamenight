@@ -3,6 +3,13 @@ var router = express.Router();
 var Users = require('../models/user.js');
 
 
+alterUser = function(user){
+  console.log('in alterUser with user:', user);
+
+
+};
+
+
 /// IN PROGRESS ///
 // update user profile
 router.put('/updateprofile', function(req,res){
@@ -44,6 +51,33 @@ router.put('/updateprofile', function(req,res){
 });
 
 });
+
+// Handles Ajax request for user profile
+router.get('/userprofile/:id', function(req, res) {
+  // find (select) all documents in our collection
+  var userToView = req.params.id;
+  console.log('userToView is :', userToView);
+  Users.findOne(
+
+         { username: userToView}
+
+).exec(
+    function(err, data) {
+      if(err) {
+        console.log('save error: ', err);
+        res.sendStatus(500);
+      } else {
+        console.log('MYEVENTS GET RESULTS:', data);
+        data = alterUser(data);
+        res.send(data);
+      }
+  });
+});
+
+
+
+
+
 
 // Handles Ajax request for user information if user is authenticated
 router.get('/', function(req, res) {

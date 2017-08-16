@@ -14,7 +14,7 @@ NgMap.getMap().then(function(map) {
         'WY').split(' ').map(function(state) {
             return {abbrev: state};
           });
-
+ev.userToView = {};
 ev.newEvent = {};
 ev.newEvent.games = [];
 ev.eventToEdit = {};
@@ -169,8 +169,17 @@ ev.approveRequest = function(eventId, requester){
     console.log('got response from approveRequest PUT');
     ev.getMyEvents();
   });
+};
 
-
+// admin approves pending request
+ev.denyRequest = function(eventId, requester){
+  console.log('in denyRequest');
+  console.log('requester is:',requester);
+  console.log('eventId is:', eventId);
+  $http.put('/event/denyrequest/' + eventId, {requester:requester}).then(function(response){
+    console.log('got response from approveRequest PUT');
+    ev.getMyEvents();
+  });
 };
 
 ev.cancelAttend = function(eventId){
@@ -270,6 +279,20 @@ ev.deleteEvent = function(eventId){
     );
   });
 };
+
+ev.getUserProfile = function(username){
+  console.log('in getUserProfile');
+  $http.get('/user/userprofile/' + username).then(function(response){
+    console.log('received response from getUserProfile GET');
+    ev.userToView = response.data;
+    console.log('ev.userToView is:', ev.userToView);
+  });
+
+
+};
+
+
+
 
 ev.test = function(){
   console.log('ev.eventToView.img:',ev.eventToView.img);
