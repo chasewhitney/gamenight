@@ -206,7 +206,7 @@ router.post('/createEvent', function(req, res) {
       newEvent.location = newData.results[0].formatted_address;
 
 
-      Event.findByIdAndUpdate({_id: newEvent._id},{img: newEvent.img, title: newEvent.title, date: newEvent.date, time: newEvent.time, address: newEvent.address, city: newEvent.city, state: newEvent.state, zipCode: newEvent.zipCode, description: newEvent.description, games: newEvent.games, position: newEvent.position, location: newEvent.location, closed: newEvent.closed},
+      Event.findByIdAndUpdate({_id: newEvent._id},{type: newEvent.type, img: newEvent.img, title: newEvent.title, date: newEvent.date, time: newEvent.time, address: newEvent.address, city: newEvent.city, state: newEvent.state, zipCode: newEvent.zipCode, description: newEvent.description, games: newEvent.games, position: newEvent.position, location: newEvent.location, closed: newEvent.closed},
       function(err, dbEvent) {
         if(err) {
           console.log('ERROR in updateprofile: ', err);

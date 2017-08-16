@@ -142,7 +142,7 @@ ev.requestToAttend = function(id){
     "Now it's up to the host!",
     "(We'll put in a good word.)",
     'success'
-  )
+  );
 
   $http.put('/event/requestattend/' + id).then(function(response){
       console.log('got response from addtosaved PUT');

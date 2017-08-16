@@ -62,14 +62,12 @@ vm.testEvent = function(){
 
 vm.test = function(){
   console.log('IN TEST');
-  var newAr = [];
-  newAr[0]= "https://cdn.filestackcontent.com/";
-  newAr[1]="4";
-  return newAr;
+  console.log('vm.userObject:', vm.userObject);
+
 };
 
 vm.test2 = function(x){
-  console.log('EVENT IMAGE:', ev.eventToView.img);
+  console.log('EVENT IMAGE:', vm.eventService.newEvent);
 };
 
 

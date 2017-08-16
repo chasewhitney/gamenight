@@ -112,7 +112,7 @@
         </div>
       </md-card-title>
       <md-card-actions layout="row" layout-align="end center">
-<md-button class="md-raised md-primary" type="button" name="button" ng-click="uc.eventService.requestToAttend(savEvent._id)">Request to Attend</md-button>
+<md-button ng-hide="savEvent.closed" class="md-raised md-primary" type="button" name="button" ng-click="uc.eventService.requestToAttend(savEvent._id)">Request to Attend</md-button>
 <md-button class="md-raised md-primary" type="button" name="button" ng-click="uc.eventService.removeFromSaved(savEvent._id)">Remove from Saved</md-button>
       </md-card-actions>
     </md-card>
