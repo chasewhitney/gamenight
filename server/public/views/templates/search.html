@@ -30,7 +30,7 @@
   </ng-map> -->
 
 
-  <ng-map style="height:600px;margin-bottom:30px;"
+  <ng-map style="height:600px;margin-bottom:30px;border:1px solid black"
   on-center-changed="centerCustomMarker()" center="zip code {{uc.searchZip}}" zoom="13">
     <!-- position="[{{latitude}}, {{longitude}}]" -->
     <marker icon="{{uc.eventService.getMarkerIcon(item.type)}}" id="{{item._id}}" position="{{item.position}}" ng-repeat="item in uc.eventService.eventArray" on-click="uc.eventService.showDetail(item)" style="max-width:10px"></marker>
