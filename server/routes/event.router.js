@@ -4,6 +4,46 @@ var Event = require('../models/event.js');
 var User = require('../models/user.js');
 var path = require('path');
 var request = require('request');
+var nodemailer = require('nodemailer');
+
+var emailUser = process.env.EMAIL_USER || require('../config.js').user;
+var emailPass = process.env.EMAIL_PASS || require('../config.js').pass;
+var transporter = nodemailer.createTransport({
+    // host: 'smtp.example.com',
+    service: 'Gmail',
+    port: 465,
+    secure: true, // secure:true for port 465, secure:false for port 587
+    auth: {
+        user: emailUser,
+        pass: emailPass
+    }
+});
+
+// setup email data with unicode symbols
+var mailOptions = {
+    from: '"Game Night 👻" <foo@blurdybloop.com>', // sender address
+    to: 'chasefu@yahoo.com', // list of receivers
+    subject: 'Thursday morning success', // Subject line
+    text: 'Hello world? Where is this going?', // plain text body
+    html: '<b>GameNight emailing is working on Thursday morning!</b>' // html body
+};
+
+
+sendMail = function(){
+  transporter.sendMail(mailOptions, function(error, info) {
+      if (error) {
+          return console.log(error);
+      }
+      // console.log('Message %s sent: %s', info.messageId, info.response);
+      console.log('messageId:', info.messageId);
+      console.log('response', info.response);
+  });
+};
+
+
+
+
+
 
 
 // gives status tag to returned events for My Events page
@@ -356,7 +396,7 @@ router.post('/createEvent', function(req, res) {
           });
 
 
-/// --- IN PROGRESS --- ///
+
 // approves requester to attend event. Removes requester from pending and adds to attending
 router.put('/approverequest/:id',function(req, res){
   var eventId = req.params.id;
@@ -374,12 +414,25 @@ router.put('/approverequest/:id',function(req, res){
     } else {
       console.log('success. in requestattend! Found:', event);
       event = pendingToAttending(event, requester);
-
       event.save(function(err){
         if(err) {
           res.sendStatus(500);
         } else {
-          res.sendStatus(201);
+          User.findOne({username : requester},
+          function(err, user) {
+            if(err) {
+              res.sendStatus(500);
+            } else {
+              console.log('success. in requestattend find user! Found:', user);
+              // mailOptions.to = user.email; //comment out for demo
+              mailOptions.subject = req.body.event.title + " request accept!";
+              mailOptions.html = "<b>Your request to attend " + req.body.event.title + " has been accepted! Have fun! :)</b>";
+              sendMail();
+
+              res.sendStatus(201);
+
+            }
+          });
         }
       })
     }

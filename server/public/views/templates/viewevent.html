@@ -22,7 +22,7 @@
         <div><span>Contact host:</span> host@gmail.com</div>
         <div><span>Description:</span> {{uc.eventService.eventToView.description}}</div>
         <div ng-show="((uc.eventService.eventToView.pending.length > 0) && (uc.eventService.eventToView.admin.includes(uc.userObject.userName)))" >
-          <span>Pending requests from: </span><div ng-repeat="requester in uc.eventService.eventToView.pending"><span ng-click="uc.eventService.getUserProfile(requester)">(  {{requester}}  )</span><button type="button" name="button" ng-click="uc.eventService.approveRequest(uc.eventService.eventToView._id, requester)">Approve</button><button type="button" name="button" ng-click="uc.eventService.denyRequest(uc.eventService.eventToView._id, requester)">Deny</button></div>
+          <span>Pending requests from: </span><div ng-repeat="requester in uc.eventService.eventToView.pending"><span ng-click="uc.eventService.getUserProfile(requester)">(  {{requester}}  )</span><button type="button" name="button" ng-click="uc.eventService.approveRequest(uc.eventService.eventToView, requester)">Approve</button><button type="button" name="button" ng-click="uc.eventService.denyRequest(uc.eventService.eventToView._id, requester)">Deny</button></div>
         </div>
       </md-card-title-text>
       <div>

@@ -175,12 +175,18 @@ ev.getEvents = function(){
 
 
 // admin approves pending request
-ev.approveRequest = function(eventId, requester){
+ev.approveRequest = function(event, requester){
   console.log('in approveRequest');
   console.log('requester is:',requester);
-  console.log('eventId is:', eventId);
-  $http.put('/event/approverequest/' + eventId, {requester:requester}).then(function(response){
+  console.log('event is:', event);
+  var data = {};
+  data.requester = requester;
+  data.event = event;
+  $http.put('/event/approverequest/' + event._id, data).then(function(response){
     console.log('got response from approveRequest PUT');
+
+
+
     ev.getMyEvents();
   });
 };
@@ -314,6 +320,9 @@ ev.test = function(){
   console.log('ev.eventToView.img:',ev.eventToView.img);
 
 };
+
+
+
 
 return ev;
 

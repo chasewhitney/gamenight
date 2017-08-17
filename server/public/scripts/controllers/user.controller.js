@@ -65,9 +65,20 @@ vm.test = function(){
 
 };
 
+
+
+
+
+
+
 vm.test2 = function(x){
-  console.log('EVENT IMAGE:', vm.eventService.newEvent);
+  console.log('in vm.test2');
+$http.put('/event/testmailer').then(function(response){
+  console.log('got response from test mailer');
+});
+
 };
+
 
 
 });
