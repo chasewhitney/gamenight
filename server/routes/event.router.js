@@ -446,7 +446,7 @@ router.put('/approverequest/:id',function(req, res){
               console.log('success. in requestattend find user! Found:', user);
               // mailOptions.to = user.email; //comment out for demo
               mailOptions.subject = req.body.event.title + " request accept!";
-              mailOptions.html = "<b>Your request to attend " + req.body.event.title + " has been accepted! Have fun! :)</b>";
+              mailOptions.html = "<b>Hello " + user.username + ", we have good news! Your request to attend " + req.body.event.title + " has been accepted! Have fun! :)</b>";
               sendMail();
 
               res.sendStatus(201);
