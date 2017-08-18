@@ -38,48 +38,4 @@
   </md-card>
 </div>
 
-
-
-
-
-
-
-
-
-
-  <p>
-    Viewing event!
-  </p>
-  <p>
-    Title: {{uc.eventService.eventToView.title}}
-  </p>
-  <p>
-    Hosted by: {{uc.eventService.eventToView.host}}
-  </p>
-  <p>
-    Date: {{uc.eventService.eventToView.date}}
-  </p>
-  <p>
-    Time: {{uc.eventService.eventToView.time}}
-  </p>
-  <p>
-    Location: {{uc.eventService.eventToView.location}}
-  </p>
-  <p>
-    Games: {{uc.eventService.eventToView.games}}
-  </p>
-  <p>
-    Description: {{uc.eventService.eventToView.description}}
-  </p>
-  <p>
-    Attending: {{uc.eventService.eventToView.attending}}
-  </p>
-
-
-
-
-  <button ng-show="!((uc.eventService.eventToView.saved.includes(uc.userObject.userName)) || (uc.eventService.eventToView.admin.includes(uc.userObject.userName)))" type="button" name="button" ng-click="uc.eventService.addToSaved()">Save</button>
-  <button ng-show="!((uc.eventService.eventToView.pending.includes(uc.userObject.userName)) || (uc.eventService.eventToView.admin.includes(uc.userObject.userName)) || (uc.eventService.eventToView.attending.includes(uc.userObject.userName)))" type="button" name="button" ng-click="uc.eventService.requestToAttend()">Request to Attend</button>
-  <button ng-show="uc.eventService.eventToView.admin.includes(uc.userObject.userName)" type="button" name="button" ng-click="uc.eventService.goToEditEvent()">EDIT</button>
-  <button type="button" name="button" ng-click="uc.mongooseTest()">TEST</button>
 </div>

@@ -213,7 +213,8 @@ ev.approveRequest = function(event, requester){
   data.event = event;
   $http.put('/event/approverequest/' + event._id, data).then(function(response){
     console.log('got response from approveRequest PUT');
-
+    var index = ev.eventToView.pending.indexOf(requester);
+    ev.eventToView.pending.splice(index, 1);
 
 
     ev.getMyEvents();
@@ -227,6 +228,9 @@ ev.denyRequest = function(eventId, requester){
   console.log('eventId is:', eventId);
   $http.put('/event/denyrequest/' + eventId, {requester:requester}).then(function(response){
     console.log('got response from approveRequest PUT');
+    var index = ev.eventToView.pending.indexOf(requester);
+    ev.eventToView.pending.splice(index, 1);
+
     ev.getMyEvents();
   });
 };
