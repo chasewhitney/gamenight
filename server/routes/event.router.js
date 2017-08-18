@@ -145,6 +145,26 @@ router.get('/myevents/', function(req, res) {
   });
 });
 
+router.put('/filteredsearch/', function(req, res) {
+  // find (select) all documents in our collection
+  var searchParams = req.body;
+  console.log('searchParams :', searchParams);
+  Event.find({
+    "$and": searchParams
+}).exec(
+    function(err, data) {
+      if(err) {
+        console.log('save error: ', err);
+        res.sendStatus(500);
+      } else {
+        console.log('MYEVENTS GET RESULTS:', data);
+        res.send(data);
+      }
+  });
+});
+
+
+
 // Search all events
 router.get('/search', function(req, res) {
   // find (select) all documents in our collection
@@ -246,7 +266,7 @@ router.post('/createEvent', function(req, res) {
       newEvent.location = newData.results[0].formatted_address;
 
 
-      Event.findByIdAndUpdate({_id: newEvent._id},{type: newEvent.type, img: newEvent.img, title: newEvent.title, date: newEvent.date, time: newEvent.time, address: newEvent.address, city: newEvent.city, state: newEvent.state, zipCode: newEvent.zipCode, description: newEvent.description, games: newEvent.games, position: newEvent.position, location: newEvent.location, closed: newEvent.closed},
+      Event.findByIdAndUpdate({_id: newEvent._id},{skill: newEvent.skill, type: newEvent.type, img: newEvent.img, title: newEvent.title, date: newEvent.date, time: newEvent.time, address: newEvent.address, city: newEvent.city, state: newEvent.state, zipCode: newEvent.zipCode, description: newEvent.description, games: newEvent.games, position: newEvent.position, location: newEvent.location, closed: newEvent.closed},
       function(err, dbEvent) {
         if(err) {
           console.log('ERROR in updateprofile: ', err);
@@ -326,7 +346,7 @@ router.post('/createEvent', function(req, res) {
           if(err) {
             res.sendStatus(500);
           } else {
-            console.log('success. in requestattend! Found:', event);
+            console.log('success. in removeattend! Found:', event);
             var index = event.attending.indexOf(req.user.username);
             event.attending.splice(index, 1);
 

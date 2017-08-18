@@ -30,11 +30,48 @@ ev.myRealEvents = {
   saved: [],
   denied: [],
 };
-
+ev.searchParams={};
+ev.searchParams.games=[];
 ev.event = ev.eventArray[0];
 
-ev.client = filestack.init('Asuq5FpJHThCT68CMbHISz');
+ev.getEvents = function(){
+  $http.get('/event/search').then(function(response){
+      console.log('mongooseTest GET response:', response);
+      ev.eventArray = response.data;
+      console.log('eventArray is: ', ev.eventArray);
 
+    });
+};
+
+ev.filteredSearch = function(){
+  console.log('ev.searchParams is:', ev.searchParams);
+  var searchArray = [];
+  if(ev.searchParams.game){
+    searchArray.push({ games: ev.searchParams.game});
+  }
+  if(ev.searchParams.skill && ev.searchParams.skill != "Any"){
+    searchArray.push({ skill: ev.searchParams.skill});
+  }
+  if(ev.searchParams.type && ev.searchParams.type != "Any"){
+    searchArray.push({ type: ev.searchParams.type});
+  }
+  console.log('searchArray is:', searchArray);
+
+  if(searchArray.length > 0){
+  $http.put('/event/filteredsearch/', searchArray).then(function(response){
+    console.log('received response from filteredsearch PUT');
+    ev.eventArray = response.data;
+    console.log('eventArray is:', ev.eventArray);
+
+  });
+} else {
+  ev.getEvents();
+}
+};
+
+
+
+ev.client = filestack.init('Asuq5FpJHThCT68CMbHISz');
 ev.returnPicker = function() {
   var newImg = [];
     ev.client.pick({
@@ -157,19 +194,11 @@ ev.requestToAttend = function(id){
 
   $http.put('/event/requestattend/' + id).then(function(response){
       console.log('got response from addtosaved PUT');
-      ev.eventToView.pending.push(ev.userObject.userName);
     });
     ev.getMyEvents();
 };
 
-ev.getEvents = function(){
-  $http.get('/event/search').then(function(response){
-      console.log('mongooseTest GET response:', response);
-      ev.eventArray = response.data;
-      console.log('eventArray is: ', ev.eventArray);
 
-    });
-};
 
 
 
@@ -220,6 +249,7 @@ ev.cancelAttend = function(eventId){
 
       'success'
     );
+    console.log('sending PUT to /event/removeattend/'+ eventId);
     $http.put('/event/removeattend/' + eventId).then(function(response){
       console.log('received response from cancelAttend PUT');
       ev.getMyEvents();

@@ -18,7 +18,7 @@
         <div><span>Location:</span> {{uc.eventService.eventToView.location}}</div>
         <div><span>Games:</span> {{uc.eventService.eventToView.games}}</div>
         <div><span>Capacity:</span> 12 players</div>
-        <div><span>Skill levels welcome:</span> All</div>
+        <div><span>Skill levels welcome:</span> {{uc.eventService.eventToView.skill}}</div>
         <div><span>Contact host:</span> host@gmail.com</div>
         <div><span>Description:</span> {{uc.eventService.eventToView.description}}</div>
         <div ng-show="((uc.eventService.eventToView.pending.length > 0) && (uc.eventService.eventToView.admin.includes(uc.userObject.userName)))" >

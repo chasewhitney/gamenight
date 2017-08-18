@@ -56,7 +56,7 @@ vm.testEvent = function(){
 
 
 
-    vm.eventService.getEvents();
+    //vm.eventService.getEvents();
     vm.eventService.getMyEvents();
 
 vm.test = function(){

@@ -12,7 +12,7 @@
 
 
                 <div class="inputHeader">
-                  <h3>Create New Event</h3>
+                  <h3>Edit Event</h3>
                 </div>
 
 
@@ -31,15 +31,9 @@
                 <label>Title</label>
                 <input ng-model="uc.eventService.eventToView.title">
               </md-input-container>
-
-              <div style="margin-left:20px" layout-align="end">
-
-
-              <md-switch ng-model="uc.eventService.eventToView.closed" aria-label="Switch 1">
+              <md-switch style="margin-left:40px" ng-model="uc.eventService.eventToView.closed" aria-label="Switch 1">
               <span ng-show="!uc.eventService.eventToView.closed">Event open</span><span ng-show="uc.eventService.eventToView.closed">Event full</span>
               </md-switch>
-</div>
-
               </div>
               <div layout="row">
               <md-input-container style="margin-right:20px">
@@ -52,15 +46,28 @@
                 <input ng-model="uc.eventService.eventToView.time">
               </md-input-container>
               </div>
+              <div layout="row">
 
-              <md-radio-group style="color:gray" ng-model="uc.eventService.eventToView.type">
-                <span style="max-height:20px;margin-right:20px">Type:</span>
-                <md-radio-button style="margin: 10px" value="board" class="md-primary">Board games</md-radio-button>
-                <md-radio-button style="margin: 10px" value="outdoor" class="md-primary">Outdoor games</md-radio-button>
-                <md-radio-button style="margin: 10px" value="video" class="md-primary">Video games</md-radio-button>
+
+              <md-radio-group layout="column" style="color:gray" ng-model="uc.eventService.eventToView.type">
+                <span>Type:</span>
+                <md-radio-button value="board" class="md-primary">Board games</md-radio-button>
+                <md-radio-button value="outdoor" class="md-primary">Outdoor games</md-radio-button>
+                <md-radio-button value="video" class="md-primary">Video games</md-radio-button>
               </md-radio-group>
 
 
+
+              <div style="margin-left:80px" layout="column">
+              <span style="color:gray;margin-top:20px">Skill levels welcome:</span>
+              <md-select ng-model="uc.eventService.eventToView.skill" placeholder="Skill level" class="md-no-underline">
+
+                        <md-option value="Open to all">Open to all</md-option>
+                        <md-option value="Know how to play">Know how to play</md-option>
+                        <md-option value="Skilled players only">Skilled players only</md-option>
+                      </md-select>
+                      </div>
+              </div>
             </div>
 
 

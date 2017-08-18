@@ -2,8 +2,8 @@
 <div ng-include="'views/partials/nav.html'"></div>
 <div class="container">
 
-<button type="button" name="button" ng-click="uc.test2()">TEST</button>
-<div ng-show="uc.editing == true"><input type="button" value="Upload" ng-click="uc.testVar = uc.eventService.returnPicker()" /> <span>Upload profile image</span></div>
+<!-- <button type="button" name="button" ng-click="uc.test2()">TEST</button> -->
+<!-- <div ng-show="uc.editing == true"><input type="button" value="Upload" ng-click="uc.testVar = uc.eventService.returnPicker()" /> <span>Upload profile image</span></div> -->
 <!-- <button type="button" name="button" ng-click="uc.test2()">TEST2</button>
 <input type="button" value="Upload" ng-click="uc.eventService.returnPicker()" /> <span>Upload an image</span> -->
 
@@ -37,9 +37,9 @@
         <div><span>Age:</span> <input type="text" name="" ng-model="uc.userObject.age" value="{{uc.userObject.age}}" /></div>
         <div><span>Gender:</span> <input type="text" name="" ng-model="uc.userObject.gender" value="{{uc.userObject.gender}}" /></div>
         <div><span>Location:</span> <input type="text" name="" ng-model="uc.userObject.location" value="{{uc.userObject.location}}" /></div>
-        <div><span>Favorite Games:</span> <input type="text" name="" ng-model="uc.userObject.favoriteGames" value="{{uc.userObject.favoriteGames}}" /></div>
+        <div><span>Favorite Games:</span> <input style="width:70%;" type="text" name="" ng-model="uc.userObject.favoriteGames" value="{{uc.userObject.favoriteGames}}" /></div>
         <div><span>Contact Me:</span> <input type="text" name="" ng-model="uc.userObject.contactInfo" value="{{uc.userObject.contactInfo}}" /></div>
-        <div><span>Description:</span> <input type="text" name="" ng-model="uc.userObject.aboutMe" value="{{uc.userObject.aboutMe}}" /></div>
+        <div><span>Description:</span> <input style="width:100%;" type="text" name="" ng-model="uc.userObject.aboutMe" value="{{uc.userObject.aboutMe}}" /></div>
 
       </md-card-title-text>
 

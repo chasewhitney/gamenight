@@ -4,9 +4,36 @@
   <div class="midContainer">
 
 
-  <label>Search by zip code:</label>
-  <input type="text" name="" ng-model="zip">
-  <button type="button" name="button" ng-click="uc.setSearchZip(zip)">Go!</button>
+
+
+<div flex="80" style="background-color:white;margin-left:auto;margin-right:auto">
+  <!--
+  search by:
+  checkbox include full events
+  type, games, skill, date window
+  -->
+
+  <label style="display:inline-block;font-size:18px;margin:15px;">Zip:</label><input style="display:inline-block;margin-right:10px" type="text" name="" ng-model="uc.searchZip" placeholder="zip code">
+  <md-select style="display:inline-block;margin:15px;font-size:18px" ng-model="uc.eventService.searchParams.type" placeholder="Any event type" class="md-no-underline">
+    <md-option value="Any">Any event type</md-option>
+    <md-option value="board">Board games</md-option>
+    <md-option value="outdoor">Outdoor games</md-option>
+    <md-option value="video">Video games</md-option>
+  </md-select>
+  <md-select style="display:inline-block;margin:15px;font-size:18px" ng-model="uc.eventService.searchParams.skill" placeholder="Any skill level" class="md-no-underline">
+    <md-option value="Any">Any skill level</md-option>
+    <md-option value="Open to all">Open to all</md-option>
+    <md-option value="Know how to play">Know how to play</md-option>
+    <md-option value="Skilled players only">Skilled players only</md-option>
+  </md-select>
+
+  <label style="display:inline-block;margin:15px;font-size:18px" >Game:</label><input style="display:inline-block" type="text" name="" ng-model="uc.eventService.searchParams.game" placeholder="Any game">
+<!-- <md-chips style="margin:10px;" ng-model="uc.eventService.searchParams.games" md-removable="uc.eventService.removable"></md-chips> -->
+<md-button style="display:inline-block;margin:15px" type="button" name="button" class="md-raised md-primary" ng-click="uc.eventService.filteredSearch();uc.setSearchZip(uc.searchZip)">SEARCH</md-button>
+</div>
+
+
+  <!-- <button type="button" name="button" ng-click="uc.setSearchZip(uc.searchZip)">Go!</button> -->
   </div>
 
   <div class="midContainer" flex="80">
