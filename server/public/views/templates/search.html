@@ -58,7 +58,7 @@
 
 
   <ng-map style="height:600px;margin-bottom:30px;border:1px solid black"
-  on-center-changed="centerCustomMarker()" center="zip code {{uc.searchZip}}" zoom="13">
+  on-center-changed="centerCustomMarker()" center="zip code {{uc.searchZip}}" zoom="11">
     <!-- position="[{{latitude}}, {{longitude}}]" -->
     <marker icon="{{uc.eventService.getMarkerIcon(item.type)}}" id="{{item._id}}" position="{{item.position}}" ng-repeat="item in uc.eventService.eventArray" on-click="uc.eventService.showDetail(item)" style="max-width:10px"></marker>
 <!-- BOARD icon="https://cdn.filestackcontent.com/wB4xspHjRbleGDmjOqQq" -->
@@ -66,28 +66,25 @@
 <!-- OUTDOORS icon="https://cdn.filestackcontent.com/Qi4VhBLTZzKUm3Qx9Mug" -->
 
     <info-window id="foo-iw" >
-      <div ng-non-bindable="">
-        <md-card>
-          <md-card-title>
+      <div style="text-align:center" ng-non-bindable="">
+        <div style="text-align:right">
+          <p class="md-subhead" ng-hide="uc.eventService.event.closed" style="margin-right:10px;color:green">Status: Open</p>
+          <p class="md-subhead" ng-show="uc.eventService.event.closed" style="margin-right:10px;color:red">Status: Full</p>
+        </div>
 
-            <md-card-title-media>
-              <div class="card-media" style="height:150px;width:150px;margin-right:10px"></div>
-            </md-card-title-media>
+              <img ng-show="uc.eventService.event.img.length > 1" ng-src="{{uc.eventService.event.img[0] + uc.eventService.event.img[1]}}" style="max-width:150px;margin-right:10px;"/>
 
-            <md-card-title-text>
-              <span class="md-headline">{{uc.eventService.event.title}}</span>
-              <span class="md-subhead">{{uc.eventService.event.date | date}} at {{uc.eventService.event.time}}</span>
-              <span class="md-subhead">{{uc.eventService.event.games}}</span>
-              <span class="md-subhead">{{uc.eventService.event.description}}</span>
-            </md-card-title-text>
-            <div>
-              <p style="font-size:14px;margin-top:-15px">Status: Open</p>
-            </div>
-          </md-card-title>
+              <p class="md-headline">{{uc.eventService.event.title}}</p>
+              <p class="md-subhead">{{uc.eventService.event.date | date}} at {{uc.eventService.event.time}}</p>
+              <p class="md-subhead">{{uc.eventService.event.games.join(', ')}}</p>
+              <p class="md-subhead">{{uc.eventService.event.description}}</p>
+
+
+
           <md-card-actions layout="row" layout-align="end center">
             <md-button type="button" name="button" ng-click="uc.eventService.goToEvent(uc.eventService.event)">View Event</md-button>
           </md-card-actions>
-        </md-card>
+
 
       </div>
     </info-window>

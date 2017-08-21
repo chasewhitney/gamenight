@@ -5,20 +5,22 @@
 
   <div flex-xs flex-gt-xs="80" layout="column" class="pageContainer">
     <!-- HOSTING -->
-    <md-card class="md-whiteframe-3dp" ng-show="admEvent.status == 'admin'" ng-repeat="admEvent in uc.eventService.myEvents">
-      <md-card-title style="background-color:yellow">
+    <md-card style="font-family:Roboto" class="md-whiteframe-3dp" ng-show="admEvent.status == 'admin'" ng-repeat="admEvent in uc.eventService.myEvents">
+      <md-card-title style="background-color:{{uc.eventService.getColor(admEvent.type)}}">
 
         <md-card-title-media style="margin-right:10px;max-width:350px">
           <img ng-show="admEvent.img.length > 1" ng-src="{{admEvent.img[0] + admEvent.img[1]}}" ng-click="uc.eventService.goToEvent(admEvent)"/>
           <div ng-hide="admEvent.img.length > 1" class="card-media" style="height:250px;width:350px" ng-click="uc.eventService.goToEvent(admEvent)"></div>
         </md-card-title-media>
 
-        <md-card-title-text style="background-color:yellow;">
-          <span class="md-headline">{{admEvent.title}}</span>
-          <span class="md-subhead">When: {{admEvent.date | date}} at {{admEvent.time}}</span>
-          <span class="md-subhead">Where: {{admEvent.location}}</span>
-          <span class="md-subhead">Games: {{admEvent.games}}</span><br/>
-          <span class="md-subhead">{{admEvent.description}}</span>
+        <md-card-title-text style="background-color:{{uc.eventService.getColor(admEvent.type)}};">
+          <span style="text-align:center" class="md-headline">{{admEvent.title}}</span>
+          <div style="font-size:16px;text-align:center">
+          <p>{{admEvent.date | date}} at {{admEvent.time}}</p>
+          <p>{{admEvent.location}}</p>
+          <br/><p><strong>Games: </strong>{{admEvent.games.join(', ')}}</p>
+          <br/><p style="font-style:italic">{{admEvent.description}}</p>
+            </div>
         </md-card-title-text>
         <div style="text-align:right">
           <p style="font-size:24px;margin-top:-10px">HOSTING</p>
@@ -35,19 +37,21 @@
 
     <!-- ATTENDING -->
     <md-card class="md-whiteframe-3dp" ng-show="attEvent.status == 'attending'" ng-repeat="attEvent in uc.eventService.myEvents">
-      <md-card-title style="background-color:green">
+      <md-card-title style="background-color:{{uc.eventService.getColor(attEvent.type)}}">
 
         <md-card-title-media style="margin-right:10px;max-width:350px">
           <img ng-show="attEvent.img.length > 1" ng-src="{{attEvent.img[0] + attEvent.img[1]}}" ng-click="uc.eventService.goToEvent(attEvent)"/>
           <div ng-hide="attEvent.img.length > 1" class="card-media" style="height:250px;width:350px" ng-click="uc.eventService.goToEvent(attEvent)"></div>
         </md-card-title-media>
 
-        <md-card-title-text style="background-color:green">
-          <span class="md-headline">{{attEvent.title}}</span>
-          <span class="md-subhead">When: {{attEvent.date | date}} at {{attEvent.time}}</span>
-          <span class="md-subhead">Where: {{attEvent.location}}</span>
-          <span class="md-subhead">Games: {{attEvent.games}}</span><br/>
-          <span class="md-subhead">{{attEvent.description}}</span>
+        <md-card-title-text style="text-align:center;background-color:{{uc.eventService.getColor(attEvent.type)}}">
+          <span style="text-align:center" class="md-headline">{{attEvent.title}}</span>
+          <div style="font-size:16px">
+          <p>{{attEvent.date | date}} at {{attEvent.time}}</p>
+          <p>{{attEvent.location}}</p><br/>
+          <p><strong>Games: </strong>{{attEvent.games.join(', ')}}</p><br/>
+          <p style="font-style:italic">{{attEvent.description}}</p>
+        </div>
         </md-card-title-text>
         <div>
           <p style="font-size:24px;margin-top:-10px">ATTENDING</p>
@@ -62,19 +66,21 @@
 
     <!-- PENDING -->
     <md-card class="md-whiteframe-3dp" ng-show="penEvent.status == 'pending'" ng-repeat="penEvent in uc.eventService.myEvents">
-      <md-card-title style="background-color:skyblue">
+      <md-card-title style="background-color:{{uc.eventService.getColor(penEvent.type)}}">
 
         <md-card-title-media style="margin-right:10px;max-width:350px">
           <img ng-show="penEvent.img.length > 1" ng-src="{{penEvent.img[0] + penEvent.img[1]}}" ng-click="uc.eventService.goToEvent(penEvent)"/>
           <div ng-hide="penEvent.img.length > 1" class="card-media" style="height:250px;width:350px;" ng-click="uc.eventService.goToEvent(penEvent)"></div>
         </md-card-title-media>
 
-        <md-card-title-text style="background-color:skyblue">
-          <span class="md-headline">{{penEvent.title}}</span>
-          <span class="md-subhead">When: {{penEvent.date | date}} at {{penEvent.time}}</span>
-          <span class="md-subhead">Where: {{penEvent.location}}</span>
-          <span class="md-subhead">Games: {{penEvent.games}}</span><br/>
-          <span class="md-subhead">{{penEvent.description}}</span>
+        <md-card-title-text style="text-align:center;background-color:{{uc.eventService.getColor(penEvent.type)}}">
+          <span style="text-align:center" class="md-headline">{{penEvent.title}}</span>
+          <div style="font-size:16px">
+          <p>{{penEvent.date | date}} at {{penEvent.time}}</p>
+          <p>{{penEvent.location}}</p><br/>
+          <p><strong>Games: </strong>{{penEvent.games.join(', ')}}</p><br/>
+          <p style="font-style:italic">{{penEvent.description}}</p>
+        </div>
         </md-card-title-text>
         <div>
           <p style="font-size:24px;margin-top:-10px">PENDING</p>
@@ -89,19 +95,21 @@
 
     <!-- SAVED -->
     <md-card class="md-whiteframe-3dp" ng-show="savEvent.status == 'saved'" ng-repeat="savEvent in uc.eventService.myEvents">
-      <md-card-title style="background-color:white">
+      <md-card-title style="background-color:{{uc.eventService.getColor(savEvent.type)}}">
 
         <md-card-title-media style="margin-right:10px;max-width:350px">
           <img ng-show="savEvent.img.length > 1" ng-src="{{savEvent.img[0] + savEvent.img[1]}}" ng-click="uc.eventService.goToEvent(savEvent)"/>
           <div ng-hide="savEvent.img.length > 1" class="card-media" style="height:250px;width:350px" ng-click="uc.eventService.goToEvent(savEvent)"></div>
         </md-card-title-media>
 
-        <md-card-title-text style="background-color:white">
+        <md-card-title-text style="text-align:center;background-color:{{uc.eventService.getColor(savEvent.type)}}">
           <span class="md-headline">{{savEvent.title}}</span>
-          <span class="md-subhead">When: {{savEvent.date | date}} at {{savEvent.time}}</span>
-          <span class="md-subhead">Where: {{savEvent.location}}</span>
-          <span class="md-subhead">Games: {{savEvent.games}}</span><br/>
-          <span class="md-subhead">{{savEvent.description}}</span>
+          <div style="font-size:16px">
+          <p>{{savEvent.date | date}} at {{savEvent.time}}</p>
+          <p>{{savEvent.location}}</p><br/>
+          <p><strong>Games: </strong>{{savEvent.games.join(', ')}}</p><br/>
+          <p style="font-style:italic">{{savEvent.description}}</p>
+        </div>
         </md-card-title-text>
         <div>
           <p style="font-size:24px;margin-top:-10px">SAVED</p>
@@ -117,19 +125,21 @@
 
     <!-- DENIED -->
     <md-card class="md-whiteframe-3dp" ng-show="denEvent.status == 'denied'" ng-repeat="denEvent in uc.eventService.myEvents">
-      <md-card-title style="background-color:red">
+      <md-card-title style="background-color:{{uc.eventService.getColor(denEvent.type)}}">
 
         <md-card-title-media style="margin-right:10px;max-width:350px">
           <img ng-show="denEvent.img.length > 1" ng-src="{{denEvent.img[0] + denEvent.img[1]}}" ng-click="uc.eventService.goToEvent(denEvent)"/>
           <div ng-hide="denEvent.img.length > 1" class="card-media" style="height:250px;width:350px" ng-click="uc.eventService.goToEvent(denEvent)"></div>
         </md-card-title-media>
 
-        <md-card-title-text style="background-color:red">
+        <md-card-title-text style="text-align:center;background-color:{{uc.eventService.getColor(denEvent.type)}}">
           <span class="md-headline">{{denEvent.title}}</span>
-          <span class="md-subhead">When: {{denEvent.date | date}} at {{denEvent.time}}</span>
-          <span class="md-subhead">Where: {{denEvent.location}}</span>
-          <span class="md-subhead">Games: {{denEvent.games}}</span><br/>
-          <span class="md-subhead">{{denEvent.description}}</span>
+          <div style="font-size:16px">
+          <p>{{denEvent.date | date}} at {{denEvent.time}}</p>
+          <p>{{denEvent.location}}</p><br/>
+          <p><strong>Games: </strong>{{denEvent.games.join(', ')}}</p><br/>
+          <p style="font-style:italic">{{denEvent.description}}</p>
+        </div>
         </md-card-title-text>
         <div>
           <p style="font-size:24px;margin-top:-10px">DENIED</p>

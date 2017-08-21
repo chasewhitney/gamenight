@@ -195,6 +195,8 @@ ev.requestToAttend = function(id){
   $http.put('/event/requestattend/' + id).then(function(response){
       console.log('got response from addtosaved PUT');
     });
+    ev.eventToView.pending.push(ev.userObject.userName);
+    console.log('ev.eventToView is:', ev.eventToView);
     ev.getMyEvents();
 };
 
@@ -347,7 +349,17 @@ ev.getUserProfile = function(username){
 
 };
 
+ev.getColor = function(type){
+  console.log('in getColor');
+if(type == "board"){
+  return "#e57737";
+} else if(type == "outdoor"){
+  return "#39E589";
+} else {
+  return "#6EC3E5";
+}
 
+};
 
 
 ev.test = function(){
