@@ -62,10 +62,13 @@ alterData = function(data, name){
         newData[i].status = "attending";
     } else if(newData[i].denied.includes(name)){
         newData[i].status = "denied";
+        newData[i].location = newData[i].city + ", " + newData[i].state;
     } else if(newData[i].pending.includes(name)){
         newData[i].status = "pending";
+        newData[i].location = newData[i].city + ", " + newData[i].state;
     } else if(newData[i].saved.includes(name)){
         newData[i].status = "saved";
+        newData[i].location = newData[i].city + ", " + newData[i].state;
     }
   }
 

@@ -15,7 +15,8 @@
 
         <div><span>Hosted by:</span> <span ng-click="uc.eventService.getUserProfile(uc.eventService.eventToView.host)">{{uc.eventService.eventToView.host}}</span></div>
         <div><span>When:</span> {{uc.eventService.eventToView.date | date}} at {{uc.eventService.eventToView.time}}</div>
-        <div><span>Location:</span> {{uc.eventService.eventToView.location}}</div>
+        <div><span>Location:</span> <tag ng-show="uc.eventService.eventToView.attending.includes(uc.userObject.userName) || uc.eventService.eventToView.admin.includes(uc.userObject.userName)">{{uc.eventService.eventToView.location}}</tag>
+        <tag ng-hide="uc.eventService.eventToView.attending.includes(uc.userObject.userName) || uc.eventService.eventToView.admin.includes(uc.userObject.userName)">{{uc.eventService.eventToView.city}}, {{uc.eventService.eventToView.state}}</tag></div>
         <div><span>Games:</span> {{uc.eventService.eventToView.games.join(', ')}}</div>
         <div><span>Skill levels welcome:</span> {{uc.eventService.eventToView.skill}}</div>
         <div><span>Contact host:</span> host@gmail.com</div>
