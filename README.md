@@ -64,11 +64,6 @@ Features that you would like to add at some point in the future.
 - [ ] Users can request to be notified if a specific users hosts an event.
 - [ ] Users can add other users to a 'blocked' list, preventing them from seeing the hosts event
 
-## Authors
+## Author
 
 * Chase Whitney
-
-
-## Acknowledgments
-
-* Hat tip to anyone who's code was used
