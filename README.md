@@ -39,7 +39,7 @@ Coming soon.
 
 ## Documentation
 
-https://docs.google.com/document/d/1-iRAlIDfihibCsgNlhLMQGrwwyp_jh7iVUFsWrQA3js/edit#heading=h.x5497hm2698b
+https://docs.google.com/document/d/1-iRAlIDfihibCsgNlhLMQGrwwyp_jh7iVUFsWrQA3js/edit?usp=sharing
 
 ### Completed Features
 
