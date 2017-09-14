@@ -20,20 +20,20 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 * [Node.js](https://nodejs.org/en/)
-    *"angular": "^1.6.5",
-    *"angular-route": "^1.6.5",
-    *"bcrypt": "^1.0.2",
-    *"body-parser": "^1.13.3",
-    *"express": "^4.13.1",
-    *"express-session": "^1.13.0",
-    *"jquery": "^2.1.4",
-    *"mongoose": "^4.4.6",
-    *"nodemailer": "^4.1.0",
-    *"passport": "^0.2.2",
-    *"passport-local": "^1.0.0",
-    *"path": "^0.11.14",
-    *"request": "^2.81.0",
-    *"sweetalert2": "^6.6.8"
+* "angular": "^1.6.5",
+* "angular-route": "^1.6.5",
+* "bcrypt": "^1.0.2",
+* "body-parser": "^1.13.3",
+* "express": "^4.13.1",
+* "express-session": "^1.13.0",
+* "jquery": "^2.1.4",
+* "mongoose": "^4.4.6",
+* "nodemailer": "^4.1.0",
+* "passport": "^0.2.2",
+* "passport-local": "^1.0.0",
+* "path": "^0.11.14",
+* "request": "^2.81.0",
+* "sweetalert2": "^6.6.8"
 
 
 ### Installing
@@ -66,4 +66,4 @@ Features that you would like to add at some point in the future.
 
 ## Author
 
-* Chase Whitney
+Chase Whitney
