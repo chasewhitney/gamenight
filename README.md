@@ -4,14 +4,7 @@ GameNight is a web application that allows users to create, manage, and search f
 
 ## Built With
 
-MEAN Stack
--MongoDB
--Express
--Angular 1.6
--Node
-sweetalert2
-nodemailer
-passport
+MEAN Stack: MongoDB, Express, Angular 1.6, Node, Angular Material, sweetalert2, nodemailer, passport
 
 ## Getting Started
 
