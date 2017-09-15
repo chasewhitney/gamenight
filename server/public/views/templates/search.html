@@ -53,7 +53,7 @@
           <p class="md-subhead windowStatusfull" ng-show="uc.eventService.event.closed">Status: Full</p>
         </div>
 
-              <img ng-show="uc.eventService.event.img.length > 1" ng-src="{{uc.eventService.event.img[0] + uc.eventService.event.img[1]}}" class="searchImage"/>
+              <img ng-show="uc.eventService.event.img.length > 1" ng-src="{{uc.eventService.event.img[0] + uc.eventService.event.img[1]}}" style="max-width:250px;margin-right:10px;"/>
 
               <p class="md-headline">{{uc.eventService.event.title}}</p>
               <p class="md-subhead">{{uc.eventService.event.date | date}} at {{uc.eventService.event.time}}</p>
