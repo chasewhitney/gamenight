@@ -121,8 +121,8 @@ ev.updateEvent = function(){
   console.log('in updateEvent, sending ev.eventToView: ', ev.eventToView);
 
   swal(
-    'This should attract more bugs to your web!',
-    'Event updated!',
+    'Event Updated!',
+    '',
     'success'
   );
 
