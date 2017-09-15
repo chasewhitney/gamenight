@@ -23,6 +23,7 @@ myApp.factory('UserService', function($http, $location){
               userObject.contactInfo = response.data.contactInfo;
               userObject.aboutMe = response.data.aboutMe;
               userObject.img = response.data.img;
+              //userObject.blah = response.data.blah;
               console.log('RESPONSE DOT DATA DOT IMAGE:', response.data.img);
               console.log('USEROBJECT DOT IMAGE', userObject.img);
 

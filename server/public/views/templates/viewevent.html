@@ -1,41 +1,42 @@
 <header ng-include="'/views/partials/header.html'"></header>
 <div ng-include="'views/partials/nav.html'"></div>
 <div class="container">
-<div flex-xs flex-gt-xs="80" layout="column" class="pageContainer">
-  <md-card style="margin-top:20px" class="md-whiteframe-5dp">
-    <div layout="row" style="background-color:{{uc.eventService.getColor(uc.eventService.eventToView.type)}}"><h1 style="font-size:48px;text-align:center;margin-left:auto;margin-right:auto;">{{uc.eventService.eventToView.title}}</h1></div>
-    <md-card-title>
+  <div flex-xs flex-gt-xs="80" layout="column" class="pageContainer">
+    <md-card class="md-whiteframe-5dp profileCard">
+      <div layout="row" style="background-color:{{uc.eventService.getColor(uc.eventService.eventToView.type)}}"><h1 class="profileHead">{{uc.eventService.eventToView.title}}</h1></div>
+      <md-card-title>
 
-      <md-card-title-media>
-        <img ng-show="uc.eventService.eventToView.img.length > 1" ng-src="{{uc.eventService.eventToView.img[0] + uc.eventService.eventToView.img[1]}}" style="max-width:350px"/>
-        <div ng-hide="uc.eventService.eventToView.img.length > 1" class="card-media" style="height:250px;width:350px;margin-right:10px"></div>
-      </md-card-title-media>
+        <md-card-title-media>
+          <img ng-show="uc.eventService.eventToView.img.length > 1" ng-src="{{uc.eventService.eventToView.img[0] + uc.eventService.eventToView.img[1]}}" style="max-width:350px"/>
+          <div ng-hide="uc.eventService.eventToView.img.length > 1" class="card-media profileNoImage"></div>
+        </md-card-title-media>
 
-      <md-card-title-text class="eventSubheading">
+        <md-card-title-text class="eventSubheading">
 
-        <div><span>Hosted by:</span> <span ng-click="uc.eventService.getUserProfile(uc.eventService.eventToView.host)">{{uc.eventService.eventToView.host}}</span></div>
-        <div><span>When:</span> {{uc.eventService.eventToView.date | date}} at {{uc.eventService.eventToView.time}}</div>
-        <div><span>Location:</span> <tag ng-show="uc.eventService.eventToView.attending.includes(uc.userObject.userName) || uc.eventService.eventToView.admin.includes(uc.userObject.userName)">{{uc.eventService.eventToView.location}}</tag>
-        <tag ng-hide="uc.eventService.eventToView.attending.includes(uc.userObject.userName) || uc.eventService.eventToView.admin.includes(uc.userObject.userName)">{{uc.eventService.eventToView.city}}, {{uc.eventService.eventToView.state}}</tag></div>
-        <div><span>Games:</span> {{uc.eventService.eventToView.games.join(', ')}}</div>
-        <div><span>Skill levels welcome:</span> {{uc.eventService.eventToView.skill}}</div>
-        <div><span>Contact host:</span> host@gmail.com</div>
-        <div><span>Description:</span> {{uc.eventService.eventToView.description}}</div>
-        <div ng-show="((uc.eventService.eventToView.pending.length > 0) && (uc.eventService.eventToView.admin.includes(uc.userObject.userName)))" >
-          <span>Pending requests to attend from: </span><div ng-repeat="requester in uc.eventService.eventToView.pending"><span ng-click="uc.eventService.getUserProfile(requester)">(  {{requester}}  )</span><button type="button" name="button" ng-click="uc.eventService.approveRequest(uc.eventService.eventToView, requester)">Approve</button><button type="button" name="button" ng-click="uc.eventService.denyRequest(uc.eventService.eventToView._id, requester)">Deny</button></div>
-        </div>
-      </md-card-title-text>
-      <div>
-        <p ng-show="uc.eventService.eventToView.closed" style="font-size:24px;margin-top:-10px;color:red">EVENT FULL</p>
-        <p ng-show="!uc.eventService.eventToView.closed" style="font-size:24px;margin-top:-10px;color:green">EVENT OPEN</p>
-      </div>
-    </md-card-title>
-    <md-card-actions layout="row" layout-align="end center">
-      <md-button class="md-raised md-primary" ng-show="!((uc.eventService.eventToView.saved.includes(uc.userObject.userName)) || (uc.eventService.eventToView.admin.includes(uc.userObject.userName)))" type="button" name="button" ng-click="uc.eventService.addToSaved()">Save</md-button>
-      <md-button class="md-raised md-primary" ng-show="!((uc.eventService.eventToView.pending.includes(uc.userObject.userName)) || (uc.eventService.eventToView.closed) || (uc.eventService.eventToView.denied.includes(uc.userObject.userName)) || (uc.eventService.eventToView.admin.includes(uc.userObject.userName)) || (uc.eventService.eventToView.attending.includes(uc.userObject.userName)))" type="button" name="button" ng-click="uc.eventService.requestToAttend(uc.eventService.eventToView._id)">Request to Attend</md-button>
-      <md-button class="md-raised md-primary" ng-show="uc.eventService.eventToView.admin.includes(uc.userObject.userName)" type="button" name="button" ng-click="uc.eventService.goToEditEvent(uc.eventService.eventToView)">EDIT</md-button>
-    </md-card-actions>
-  </md-card>
-</div>
+          <div><span>Hosted by:</span> <span ng-click="uc.eventService.getUserProfile(uc.eventService.eventToView.host)">{{uc.eventService.eventToView.host}}</span></div>
+          <div><span>When:</span> {{uc.eventService.eventToView.date | date}} at {{uc.eventService.eventToView.time}}</div>
+          <div><span>Location:</span> <tag ng-show="uc.eventService.eventToView.attending.includes(uc.userObject.userName) || uc.eventService.eventToView.admin.includes(uc.userObject.userName)">{{uc.eventService.eventToView.location}}</tag>
+            <tag ng-hide="uc.eventService.eventToView.attending.includes(uc.userObject.userName) || uc.eventService.eventToView.admin.includes(uc.userObject.userName)">{{uc.eventService.eventToView.city}}, {{uc.eventService.eventToView.state}}</tag></div>
+            <div><span>Games:</span> {{uc.eventService.eventToView.games.join(', ')}}</div>
+            <div><span>Skill levels welcome:</span> {{uc.eventService.eventToView.skill}}</div>
+            <!--CONTACT HOST NEEDS TO BE LINKED UP -->
+            <div><span>Contact host:</span> {{uc.eventService.eventToView.host}}@gmail.com</div>
+            <div><span>Description:</span> {{uc.eventService.eventToView.description}}</div>
+            <div ng-show="((uc.eventService.eventToView.pending.length > 0) && (uc.eventService.eventToView.admin.includes(uc.userObject.userName)))" >
+              <span>Pending requests to attend from: </span><div ng-repeat="requester in uc.eventService.eventToView.pending"><span ng-click="uc.eventService.getUserProfile(requester)">(  {{requester}}  )</span><button type="button" name="button" ng-click="uc.eventService.approveRequest(uc.eventService.eventToView, requester)">Approve</button><button type="button" name="button" ng-click="uc.eventService.denyRequest(uc.eventService.eventToView._id, requester)">Deny</button></div>
+            </div>
+          </md-card-title-text>
+          <div>
+            <p ng-show="uc.eventService.eventToView.closed" class="viewEventFull">EVENT FULL</p>
+            <p ng-show="!uc.eventService.eventToView.closed" class="viewEventOpen">EVENT OPEN</p>
+          </div>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button class="md-raised md-primary" ng-show="!((uc.eventService.eventToView.saved.includes(uc.userObject.userName)) || (uc.eventService.eventToView.admin.includes(uc.userObject.userName)))" type="button" name="button" ng-click="uc.eventService.addToSaved()">Save</md-button>
+          <md-button class="md-raised md-primary" ng-show="!((uc.eventService.eventToView.pending.includes(uc.userObject.userName)) || (uc.eventService.eventToView.closed) || (uc.eventService.eventToView.denied.includes(uc.userObject.userName)) || (uc.eventService.eventToView.admin.includes(uc.userObject.userName)) || (uc.eventService.eventToView.attending.includes(uc.userObject.userName)))" type="button" name="button" ng-click="uc.eventService.requestToAttend(uc.eventService.eventToView._id)">Request to Attend</md-button>
+          <md-button class="md-raised md-primary" ng-show="uc.eventService.eventToView.admin.includes(uc.userObject.userName)" type="button" name="button" ng-click="uc.eventService.goToEditEvent(uc.eventService.eventToView)">EDIT</md-button>
+        </md-card-actions>
+      </md-card>
+    </div>
 
-</div>
+  </div>

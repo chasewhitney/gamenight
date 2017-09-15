@@ -172,3 +172,213 @@ li a:hover {
 .inset {
   padding-left: 25px;
   padding-top: 25px; }
+
+  .noImage {
+    height:250px;
+    width:350px;
+    margin:15px
+  }
+
+.eventImage{
+   max-width:350px;
+}
+
+.textAlignCenter{
+  text-align: center
+}
+
+.maxWidth{
+  width:100%;
+}
+
+.statusSwitch{
+  margin-left:40px;
+}
+
+.gameList{
+  max-height:20px;
+  color:gray;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:-20px;
+}
+
+.home {
+  padding:5px 10px 10px 10px;
+  margin-top:20px;
+  margin-left:auto;
+  margin-right:auto;
+  background-color:white
+}
+
+.roboto {
+  font-family:Roboto
+}
+
+.myEventsImgDiv{
+  margin-right:10px;
+  max-width:350px
+}
+
+.noMyEventImage {
+  height:250px;
+  width:350px;
+}
+
+.eventsInfo{
+  font-size:16px;
+  text-align:center
+}
+
+.accent{
+  font-style:italic
+}
+
+.toRight{
+  text-align:right;
+}
+
+.eventsType{
+  font-size:24px;
+  margin-top:-10px
+}
+
+.statusFull{
+  margin-top:-20px;
+  color:red;
+  font-size:18px
+}
+
+.statusOpen{
+  margin-top:-20px;
+  color:green;
+  font-size:18px
+}
+
+.skillLevel{
+  color:gray;
+  margin-top:20px
+}
+
+.games{
+  max-height:20px;
+  margin-top:30px;
+  color:gray
+}
+
+.gameChips{
+  width:100%;
+  margin:10px;
+}
+
+.searchBox{
+  background-color:white;
+  margin-left:auto;
+  margin-right:auto
+}
+
+.zip{
+  display:inline-block;font-size:18px;margin:15px;
+}
+
+.zipInput{
+  display:inline-block;
+  margin-right:10px
+}
+
+.searchDropDown{
+  display:inline-block;
+  margin:15px;
+  font-size:18px
+}
+
+.searchMap{
+  height:600px;
+  margin-bottom:30px;
+  border:1px solid black;
+}
+
+.windowStatusOpen{
+  margin-right:10px;
+  color:green
+}
+
+.windowStatusFull{
+  margin-right:10px;
+  color:red
+}
+
+.profileHead{
+  font-size:48px;
+  text-align:center;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.profileCard{
+  margin-top:20px
+}
+
+.profileNoImage{
+  height:250px;
+  width:350px;
+  margin-right:10px
+}
+
+.viewEventFull{
+font-size:24px;
+margin-top:-10px;
+color:red
+}
+
+.viewEventOpen{
+font-size:24px;
+margin-top:-10px;
+color:green
+}
+
+.toRight{
+  margin-right:20px
+}
+
+.toGray{
+  color:gray
+}
+
+.skillCol{
+  margin-left:80px
+}
+
+.floatRight{
+  float:right;
+}
+
+.toRed{
+  background-color:#E52B53;
+}
+
+.favGames{
+  width:70%;
+}
+
+.regTop{
+  margin-top:30px;
+}
+
+.cancelLink{
+  text-decoration:none;
+  color:white
+}
+
+.inlineBlock{
+  display:inline-block
+}
+
+.markerWidth{
+  max-width:10px
+}
+
+.searchImage{
+  max-width:150px;
+  margin-right:10px;
+}

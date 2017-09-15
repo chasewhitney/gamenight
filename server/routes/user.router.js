@@ -98,6 +98,7 @@ router.get('/', function(req, res) {
       contactInfo: req.user.contactInfo,
       aboutMe: req.user.aboutMe,
       img: req.user.img,
+      //blah: "blah blah blah"
     };
     res.send(userInfo);
   } else {
