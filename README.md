@@ -1,6 +1,6 @@
-# Name of Project
+# GameNight
 
-GameNight is a web application that allows users to create, manage, and search for gaming events. Gaming events are created as either a board game, video game, or outdoor gaming event. Created events appear in a Google Maps UI which can be interacted with, allowing users to review event details, save the event to a My Events section and request approval from the host to attend the event. Once the event host approves a request to attend, the approved user has access to the event's address.
+GameNight was built as an educational project while I attended Prime Digital Academy. This web application allows users to create, manage, and search for gaming events. Gaming events are created as either a board game, video game, or outdoor gaming event. Created events appear in a Google Maps UI which can be interacted with, allowing users to review event details, save the event to a My Events section and request approval from the host to attend the event. Once the event host approves a request to attend, the approved user has access to the event's address.
 
 ## Built With
 
@@ -13,6 +13,7 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 * [Node.js](https://nodejs.org/en/)
+* npm
 * "angular": "^1.6.5",
 * "angular-route": "^1.6.5",
 * "bcrypt": "^1.0.2",
@@ -53,6 +54,7 @@ High level list of items completed.
 
 Features that you would like to add at some point in the future.
 
+- [ ] Finish server-side validations (initially built to demo)
 - [ ] Event host can invite users to his or her event.
 - [ ] Users can request to be notified if a specific users hosts an event.
 - [ ] Users can add other users to a 'blocked' list, preventing them from seeing the hosts event
