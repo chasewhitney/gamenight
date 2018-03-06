@@ -9,6 +9,7 @@ myApp.controller('LoginController', function($http, $location, UserService) {
     };
     vm.message = '';
 
+    // User login
     vm.login = function() {
       console.log('LoginController -- login');
       if(vm.user.username === '' || vm.user.password === '') {
@@ -31,6 +32,7 @@ myApp.controller('LoginController', function($http, $location, UserService) {
       }
     };
 
+    // User registration
     vm.registerUser = function() {
       console.log('LoginController -- registerUser');
       if(vm.user.username === '' || vm.user.password === '') {
