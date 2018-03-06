@@ -52,8 +52,8 @@ https://docs.google.com/document/d/1-iRAlIDfihibCsgNlhLMQGrwwyp_jh7iVUFsWrQA3js/
 
 - [ ] Finish server-side validations (initially built to demo)
 - [ ] Event host can invite users to his or her event.
-- [ ] Users can request to be notified if a specific users hosts an event.
-- [ ] Users can add other users to a 'blocked' list, preventing them from seeing the hosts event
+- [ ] Users can request to be notified if a specific user hosts an event.
+- [ ] Users can add other users to a 'blocked' list, preventing them from seeing the host's event
 
 ## Author
 
