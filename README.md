@@ -44,15 +44,11 @@ https://docs.google.com/document/d/1-iRAlIDfihibCsgNlhLMQGrwwyp_jh7iVUFsWrQA3js/
 
 ### Completed Features
 
-High level list of items completed.
-
 - [x] Create, edit, and delete events
 - [x] Search events by location, event type, skill level, and/or game
 - [x] Create and edit a user profile
 
 ### Next Steps
-
-Features that you would like to add at some point in the future.
 
 - [ ] Finish server-side validations (initially built to demo)
 - [ ] Event host can invite users to his or her event.
