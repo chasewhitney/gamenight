@@ -16,11 +16,11 @@
         <md-card-title-text style="background-color:{{uc.eventService.getColor(admEvent.type)}};">
           <span class="md-headline textAlignCenter">{{admEvent.title}}</span>
           <div class="eventsInfo">
-          <p>{{admEvent.date | date}} at {{admEvent.time}}</p>
-          <p>{{admEvent.location}}</p>
-          <br/><p><strong>Games: </strong>{{admEvent.games.join(', ')}}</p>
-          <br/><p class="accent">{{admEvent.description}}</p>
-            </div>
+            <p>{{admEvent.date | date}} at {{admEvent.time}}</p>
+            <p>{{admEvent.location}}</p>
+            <br/><p><strong>Games: </strong>{{admEvent.games.join(', ')}}</p>
+            <br/><p class="accent">{{admEvent.description}}</p>
+          </div>
         </md-card-title-text>
         <div class="toRight">
           <p class="eventsType">HOSTING</p>
@@ -47,11 +47,11 @@
         <md-card-title-text style="text-align:center;background-color:{{uc.eventService.getColor(attEvent.type)}}">
           <span class="md-headline textAlignCenter">{{attEvent.title}}</span>
           <div class="eventsInfo">
-          <p>{{attEvent.date | date}} at {{attEvent.time}}</p>
-          <p>{{attEvent.location}}</p><br/>
-          <p><strong>Games: </strong>{{attEvent.games.join(', ')}}</p><br/>
-          <p class="accent">{{attEvent.description}}</p>
-        </div>
+            <p>{{attEvent.date | date}} at {{attEvent.time}}</p>
+            <p>{{attEvent.location}}</p><br/>
+            <p><strong>Games: </strong>{{attEvent.games.join(', ')}}</p><br/>
+            <p class="accent">{{attEvent.description}}</p>
+          </div>
         </md-card-title-text>
         <div>
           <p class="eventsType">ATTENDING</p>
@@ -60,7 +60,7 @@
         </div>
       </md-card-title>
       <md-card-actions layout="row" layout-align="end center">
-<md-button class="md-raised md-primary" type="button" name="button" ng-click="uc.eventService.cancelAttend(attEvent._id)">Cancel Attendance</md-button>
+        <md-button class="md-raised md-primary" type="button" name="button" ng-click="uc.eventService.cancelAttend(attEvent._id)">Cancel Attendance</md-button>
       </md-card-actions>
     </md-card>
 
@@ -76,11 +76,11 @@
         <md-card-title-text style="text-align:center;background-color:{{uc.eventService.getColor(penEvent.type)}}">
           <span style="text-align:center" class="md-headline">{{penEvent.title}}</span>
           <div class="eventsInfo">
-          <p>{{penEvent.date | date}} at {{penEvent.time}}</p>
-          <p>{{penEvent.location}}</p><br/>
-          <p><strong>Games: </strong>{{penEvent.games.join(', ')}}</p><br/>
-          <p class="accent">{{penEvent.description}}</p>
-        </div>
+            <p>{{penEvent.date | date}} at {{penEvent.time}}</p>
+            <p>{{penEvent.location}}</p><br/>
+            <p><strong>Games: </strong>{{penEvent.games.join(', ')}}</p><br/>
+            <p class="accent">{{penEvent.description}}</p>
+          </div>
         </md-card-title-text>
         <div>
           <p class="eventsType">PENDING</p>
@@ -89,7 +89,7 @@
         </div>
       </md-card-title>
       <md-card-actions layout="row" layout-align="end center">
-<md-button class="md-raised md-primary" type="button" name="button" ng-click="uc.eventService.cancelRequest(penEvent._id)">Cancel Request</md-button>
+        <md-button class="md-raised md-primary" type="button" name="button" ng-click="uc.eventService.cancelRequest(penEvent._id)">Cancel Request</md-button>
       </md-card-actions>
     </md-card>
 
@@ -105,11 +105,11 @@
         <md-card-title-text style="text-align:center;background-color:{{uc.eventService.getColor(savEvent.type)}}">
           <span class="md-headline">{{savEvent.title}}</span>
           <div class="eventInfo">
-          <p>{{savEvent.date | date}} at {{savEvent.time}}</p>
-          <p>{{savEvent.location}}</p><br/>
-          <p><strong>Games: </strong>{{savEvent.games.join(', ')}}</p><br/>
-          <p class="accent">{{savEvent.description}}</p>
-        </div>
+            <p>{{savEvent.date | date}} at {{savEvent.time}}</p>
+            <p>{{savEvent.location}}</p><br/>
+            <p><strong>Games: </strong>{{savEvent.games.join(', ')}}</p><br/>
+            <p class="accent">{{savEvent.description}}</p>
+          </div>
         </md-card-title-text>
         <div>
           <p class="eventsType">SAVED</p>
@@ -118,8 +118,8 @@
         </div>
       </md-card-title>
       <md-card-actions layout="row" layout-align="end center">
-<md-button ng-hide="savEvent.closed" class="md-raised md-primary" type="button" name="button" ng-click="uc.eventService.requestToAttend(savEvent._id)">Request to Attend</md-button>
-<md-button class="md-raised md-primary" type="button" name="button" ng-click="uc.eventService.removeFromSaved(savEvent._id)">Remove from Saved</md-button>
+        <md-button ng-hide="savEvent.closed" class="md-raised md-primary" type="button" name="button" ng-click="uc.eventService.requestToAttend(savEvent._id)">Request to Attend</md-button>
+        <md-button class="md-raised md-primary" type="button" name="button" ng-click="uc.eventService.removeFromSaved(savEvent._id)">Remove from Saved</md-button>
       </md-card-actions>
     </md-card>
 
@@ -135,11 +135,11 @@
         <md-card-title-text style="text-align:center;background-color:{{uc.eventService.getColor(denEvent.type)}}">
           <span class="md-headline">{{denEvent.title}}</span>
           <div class="eventInfo">
-          <p>{{denEvent.date | date}} at {{denEvent.time}}</p>
-          <p>{{denEvent.location}}</p><br/>
-          <p><strong>Games: </strong>{{denEvent.games.join(', ')}}</p><br/>
-          <p class="accent">{{denEvent.description}}</p>
-        </div>
+            <p>{{denEvent.date | date}} at {{denEvent.time}}</p>
+            <p>{{denEvent.location}}</p><br/>
+            <p><strong>Games: </strong>{{denEvent.games.join(', ')}}</p><br/>
+            <p class="accent">{{denEvent.description}}</p>
+          </div>
         </md-card-title-text>
         <div>
           <p class="eventsType">DENIED</p>
@@ -148,7 +148,7 @@
         </div>
       </md-card-title>
       <md-card-actions layout="row" layout-align="end center">
-<md-button class="md-raised md-primary" type="button" name="button" ng-click="uc.eventService.removeFromSaved(denEvent._id)">Remove from Saved</md-button>
+        <md-button class="md-raised md-primary" type="button" name="button" ng-click="uc.eventService.removeFromSaved(denEvent._id)">Remove from Saved</md-button>
       </md-card-actions>
     </md-card>
 

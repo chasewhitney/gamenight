@@ -2,43 +2,43 @@
 <div ng-include="'views/partials/nav.html'"></div>
 <div class="container">
 
-<div flex-xs flex-gt-xs="80" layout="column" class="pageContainer">
-  <md-card class="md-whiteframe-5dp profileCard">
-    <div layout="row" class="toRed"><h1 class="profileHead">{{uc.eventService.userToView.username}}</h1></div>
-    <md-card-title>
+  <div flex-xs flex-gt-xs="80" layout="column" class="pageContainer">
+    <md-card class="md-whiteframe-5dp profileCard">
+      <div layout="row" class="toRed"><h1 class="profileHead">{{uc.eventService.userToView.username}}</h1></div>
+      <md-card-title>
 
-      <md-card-title-media>
-        <div ng-hide="uc.eventService.userToView.img.length > 1" class="card-media profileNoImage"></div>
-        <img ng-show="uc.eventService.userToView.img.length > 1" ng-src="{{uc.eventService.userToView.img[0] + uc.eventService.userToView.img[1]}}" class="eventImage"/>
-        <div ng-show="uc.editing == true"><input type="button" value="Upload" ng-click="uc.eventService.userToView.img = uc.eventService.returnPicker()" /> <span>Upload profile image</span></div>
-      </md-card-title-media>
+        <md-card-title-media>
+          <div ng-hide="uc.eventService.userToView.img.length > 1" class="card-media profileNoImage"></div>
+          <img ng-show="uc.eventService.userToView.img.length > 1" ng-src="{{uc.eventService.userToView.img[0] + uc.eventService.userToView.img[1]}}" class="eventImage"/>
+          <div ng-show="uc.editing == true"><input type="button" value="Upload" ng-click="uc.eventService.userToView.img = uc.eventService.returnPicker()" /> <span>Upload profile image</span></div>
+        </md-card-title-media>
 
-      <md-card-title-text ng-show="uc.editing == false" class="eventSubheading">
-        <div><span>Name:</span> {{uc.eventService.userToView.name}}</div>
-        <div><span>Age:</span> {{uc.eventService.userToView.age}}</div>
-        <div><span>Gender:</span> {{uc.eventService.userToView.gender}}</div>
-        <div><span>Location:</span> {{uc.eventService.userToView.location}}</div>
-        <div><span>Favorite Games:</span> {{uc.eventService.userToView.favoriteGames}}</div>
-        <div><span>Contact Me:</span> {{uc.eventService.userToView.contactInfo}}</div>
-        <div><span>Description:</span> {{uc.eventService.userToView.aboutMe}}</div>
+        <md-card-title-text ng-show="uc.editing == false" class="eventSubheading">
+          <div><span>Name:</span> {{uc.eventService.userToView.name}}</div>
+          <div><span>Age:</span> {{uc.eventService.userToView.age}}</div>
+          <div><span>Gender:</span> {{uc.eventService.userToView.gender}}</div>
+          <div><span>Location:</span> {{uc.eventService.userToView.location}}</div>
+          <div><span>Favorite Games:</span> {{uc.eventService.userToView.favoriteGames}}</div>
+          <div><span>Contact Me:</span> {{uc.eventService.userToView.contactInfo}}</div>
+          <div><span>Description:</span> {{uc.eventService.userToView.aboutMe}}</div>
 
-      </md-card-title-text>
+        </md-card-title-text>
 
-      <md-card-title-text ng-show="uc.editing == true" class="eventSubheading">
+        <md-card-title-text ng-show="uc.editing == true" class="eventSubheading">
 
-        <div><span>Name:</span> <input type="text" name="" ng-model="uc.eventService.userToView.name" value="{{uc.eventService.userToView.name}}" /></div>
-        <div><span>Age:</span> <input type="text" name="" ng-model="uc.eventService.userToView.age" value="{{uc.eventService.userToView.age}}" /></div>
-        <div><span>Gender:</span> <input type="text" name="" ng-model="uc.eventService.userToView.gender" value="{{uc.eventService.userToView.gender}}" /></div>
-        <div><span>Location:</span> <input type="text" name="" ng-model="uc.eventService.userToView.location" value="{{uc.eventService.userToView.location}}" /></div>
-        <div><span>Favorite Games:</span> <input type="text" name="" ng-model="uc.eventService.userToView.favoriteGames" value="{{uc.eventService.userToView.favoriteGames}}" /></div>
-        <div><span>Contact Me:</span> <input type="text" name="" ng-model="uc.eventService.userToView.contactInfo" value="{{uc.eventService.userToView.contactInfo}}" /></div>
-        <div><span>Description:</span> <input type="text" name="" ng-model="uc.eventService.userToView.aboutMe" value="{{uc.eventService.userToView.aboutMe}}" /></div>
+          <div><span>Name:</span> <input type="text" name="" ng-model="uc.eventService.userToView.name" value="{{uc.eventService.userToView.name}}" /></div>
+          <div><span>Age:</span> <input type="text" name="" ng-model="uc.eventService.userToView.age" value="{{uc.eventService.userToView.age}}" /></div>
+          <div><span>Gender:</span> <input type="text" name="" ng-model="uc.eventService.userToView.gender" value="{{uc.eventService.userToView.gender}}" /></div>
+          <div><span>Location:</span> <input type="text" name="" ng-model="uc.eventService.userToView.location" value="{{uc.eventService.userToView.location}}" /></div>
+          <div><span>Favorite Games:</span> <input type="text" name="" ng-model="uc.eventService.userToView.favoriteGames" value="{{uc.eventService.userToView.favoriteGames}}" /></div>
+          <div><span>Contact Me:</span> <input type="text" name="" ng-model="uc.eventService.userToView.contactInfo" value="{{uc.eventService.userToView.contactInfo}}" /></div>
+          <div><span>Description:</span> <input type="text" name="" ng-model="uc.eventService.userToView.aboutMe" value="{{uc.eventService.userToView.aboutMe}}" /></div>
 
-      </md-card-title-text>
+        </md-card-title-text>
 
-    </md-card-title>
+      </md-card-title>
 
-  </md-card>
-</div>
+    </md-card>
+  </div>
 
 </div>

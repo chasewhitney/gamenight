@@ -3,48 +3,38 @@
 <div class="container">
   <div class="midContainer">
 
+    <div flex="80" class="searchBox">
 
+      <label class="zip">Zip:</label><input class="zipInput" type="text" name="" ng-model="uc.searchZip" placeholder="zip code">
+      <md-select ng-model="uc.eventService.searchParams.type" placeholder="Any event type" class="searchDropDown md-no-underline">
+        <md-option value="Any">Any event type</md-option>
+        <md-option value="board">Board games</md-option>
+        <md-option value="outdoor">Outdoor games</md-option>
+        <md-option value="video">Video games</md-option>
+      </md-select>
+      <md-select ng-model="uc.eventService.searchParams.skill" placeholder="Any skill level" class="searchDropDown md-no-underline">
+        <md-option value="Any">Any skill level</md-option>
+        <md-option value="Open to all">Open to all</md-option>
+        <md-option value="Know how to play">Know how to play</md-option>
+        <md-option value="Skilled players only">Skilled players only</md-option>
+      </md-select>
 
+      <label class="searchDropDown">Game:</label><input class="inlineBlock" type="text" name="" ng-model="uc.eventService.searchParams.game" placeholder="Any game">
 
-<div flex="80" class="searchBox">
-  <!--
-  search by:
-  checkbox include full events
-  type, games, skill, date window
-  -->
-
-  <label class="zip">Zip:</label><input class="zipInput" type="text" name="" ng-model="uc.searchZip" placeholder="zip code">
-  <md-select ng-model="uc.eventService.searchParams.type" placeholder="Any event type" class="searchDropDown md-no-underline">
-    <md-option value="Any">Any event type</md-option>
-    <md-option value="board">Board games</md-option>
-    <md-option value="outdoor">Outdoor games</md-option>
-    <md-option value="video">Video games</md-option>
-  </md-select>
-  <md-select ng-model="uc.eventService.searchParams.skill" placeholder="Any skill level" class="searchDropDown md-no-underline">
-    <md-option value="Any">Any skill level</md-option>
-    <md-option value="Open to all">Open to all</md-option>
-    <md-option value="Know how to play">Know how to play</md-option>
-    <md-option value="Skilled players only">Skilled players only</md-option>
-  </md-select>
-
-  <label class="searchDropDown">Game:</label><input class="inlineBlock" type="text" name="" ng-model="uc.eventService.searchParams.game" placeholder="Any game">
-
-<md-button type="button" name="button" class=" searchDropDown md-raised md-primary" ng-click="uc.eventService.filteredSearch();uc.setSearchZip(uc.searchZip)">SEARCH</md-button>
-</div>
-
-
+      <md-button type="button" name="button" class=" searchDropDown md-raised md-primary" ng-click="uc.eventService.filteredSearch();uc.setSearchZip(uc.searchZip)">SEARCH</md-button>
+    </div>
 
   </div>
 
   <div class="midContainer" flex="80">
 
-  <ng-map class="searchMap"
-  on-center-changed="centerCustomMarker()" center="zip code {{uc.searchZip}}" zoom="11">
+    <ng-map class="searchMap"
+    on-center-changed="centerCustomMarker()" center="zip code {{uc.searchZip}}" zoom="11">
     <!-- position="[{{latitude}}, {{longitude}}]" -->
     <marker icon="{{uc.eventService.getMarkerIcon(item.type)}}" id="{{item._id}}" position="{{item.position}}" ng-repeat="item in uc.eventService.eventArray" on-click="uc.eventService.showDetail(item)" class="markerWidth"></marker>
-<!-- BOARD icon="https://cdn.filestackcontent.com/wB4xspHjRbleGDmjOqQq" -->
-<!-- VIDEO icon="https://cdn.filestackcontent.com/qI8yPkrZTr2mOqx26xmh" -->
-<!-- OUTDOORS icon="https://cdn.filestackcontent.com/Qi4VhBLTZzKUm3Qx9Mug" -->
+    <!-- BOARD icon="https://cdn.filestackcontent.com/wB4xspHjRbleGDmjOqQq" -->
+    <!-- VIDEO icon="https://cdn.filestackcontent.com/qI8yPkrZTr2mOqx26xmh" -->
+    <!-- OUTDOORS icon="https://cdn.filestackcontent.com/Qi4VhBLTZzKUm3Qx9Mug" -->
 
     <info-window id="foo-iw" >
       <div class="textAlignCenter" ng-non-bindable="">
@@ -53,19 +43,16 @@
           <p class="md-subhead windowStatusfull" ng-show="uc.eventService.event.closed">Status: Full</p>
         </div>
 
-              <img ng-show="uc.eventService.event.img.length > 1" ng-src="{{uc.eventService.event.img[0] + uc.eventService.event.img[1]}}" style="max-width:250px;margin-right:10px;"/>
+        <img ng-show="uc.eventService.event.img.length > 1" ng-src="{{uc.eventService.event.img[0] + uc.eventService.event.img[1]}}" style="max-width:250px;margin-right:10px;"/>
 
-              <p class="md-headline">{{uc.eventService.event.title}}</p>
-              <p class="md-subhead">{{uc.eventService.event.date | date}} at {{uc.eventService.event.time}}</p>
-              <p class="md-subhead">{{uc.eventService.event.games.join(', ')}}</p>
-              <p class="md-subhead">{{uc.eventService.event.description}}</p>
+        <p class="md-headline">{{uc.eventService.event.title}}</p>
+        <p class="md-subhead">{{uc.eventService.event.date | date}} at {{uc.eventService.event.time}}</p>
+        <p class="md-subhead">{{uc.eventService.event.games.join(', ')}}</p>
+        <p class="md-subhead">{{uc.eventService.event.description}}</p>
 
-
-
-          <md-card-actions layout="row" layout-align="end center">
-            <md-button type="button" name="button" ng-click="uc.eventService.goToEvent(uc.eventService.event)">View Event</md-button>
-          </md-card-actions>
-
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button type="button" name="button" ng-click="uc.eventService.goToEvent(uc.eventService.event)">View Event</md-button>
+        </md-card-actions>
 
       </div>
     </info-window>

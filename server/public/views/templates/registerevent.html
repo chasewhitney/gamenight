@@ -2,138 +2,125 @@
 <div ng-include="'views/partials/nav.html'"></div>
 <div class="container">
 
-<!-- <button type="button" name="button" ng-click="uc.test()">TEST</button> -->
-
-
+  <!-- <button type="button" name="button" ng-click="uc.test()">TEST</button> -->
 
   <div flex="70" layout="column" ng-cloak class="regTop md-inline-form everything md-whiteframe-z1 pageContainer">
+    <div class="inputHeader">
+      <h3>Create New Event</h3>
+    </div>
+    <md-content layout-gt-sm="row" layout-padding>
+      <div>
+        <div ng-hide="uc.eventService.newEvent.img" class="card-media noImage"></div>
+        <img ng-show="uc.eventService.newEvent.img" ng-src="{{uc.eventService.newEvent.img[0] + uc.eventService.newEvent.img[1]}}" class="eventImage"/>
+        <div class="textAlignCenter"><button type="button" name="button" ng-click="uc.eventService.newEvent.img = uc.eventService.returnPicker()">Upload event image</button></div>
+      </div>
+      <div layout="column">
+        <div layout="row">
+          <md-input-container class="maxWidth">
+            <label>Title</label>
+            <input ng-model="uc.eventService.newEvent.title">
+          </md-input-container>
+        </div>
+        <div layout="row">
+          <md-input-container class="toRight">
+            <label>Enter date</label>
+            <md-datepicker ng-model="uc.eventService.newEvent.date" md-open-on-focus></md-datepicker>
+          </md-input-container>
 
+          <md-input-container class="md-block">
+            <label>Time</label>
+            <input ng-model="uc.eventService.newEvent.time">
+          </md-input-container>
+        </div>
+        <div layout="row">
 
+          <md-radio-group layout="column" class="toGray" ng-model="uc.eventService.newEvent.type">
+            <span>Type:</span>
+            <md-radio-button value="board" class="md-primary">Board games</md-radio-button>
+            <md-radio-button value="outdoor" class="md-primary">Outdoor games</md-radio-button>
+            <md-radio-button value="video" class="md-primary">Video games</md-radio-button>
+          </md-radio-group>
 
-              <div class="inputHeader">
-                <h3>Create New Event</h3>
-              </div>
-
-
-        <md-content layout-gt-sm="row" layout-padding>
-          <div>
-          <div ng-hide="uc.eventService.newEvent.img" class="card-media noImage"></div>
-          <img ng-show="uc.eventService.newEvent.img" ng-src="{{uc.eventService.newEvent.img[0] + uc.eventService.newEvent.img[1]}}" class="eventImage"/>
-          <div class="textAlignCenter"><button type="button" name="button" ng-click="uc.eventService.newEvent.img = uc.eventService.returnPicker()">Upload event image</button></div>
-          </div>
-          <div layout="column">
-            <div layout="row">
-            <md-input-container class="maxWidth">
-              <label>Title</label>
-              <input ng-model="uc.eventService.newEvent.title">
-            </md-input-container>
-            </div>
-            <div layout="row">
-            <md-input-container class="toRight">
-              <label>Enter date</label>
-              <md-datepicker ng-model="uc.eventService.newEvent.date" md-open-on-focus></md-datepicker>
-            </md-input-container>
-
-            <md-input-container class="md-block">
-              <label>Time</label>
-              <input ng-model="uc.eventService.newEvent.time">
-            </md-input-container>
-            </div>
-            <div layout="row">
-
-
-            <md-radio-group layout="column" class="toGray" ng-model="uc.eventService.newEvent.type">
-              <span>Type:</span>
-              <md-radio-button value="board" class="md-primary">Board games</md-radio-button>
-              <md-radio-button value="outdoor" class="md-primary">Outdoor games</md-radio-button>
-              <md-radio-button value="video" class="md-primary">Video games</md-radio-button>
-            </md-radio-group>
-
-
-
-            <div class="skillCol" layout="column">
+          <div class="skillCol" layout="column">
             <span class="skillLevel">Skill levels welcome:</span>
             <md-select ng-model="uc.eventService.newEvent.skill" placeholder="Skill level" class="md-no-underline">
 
-                      <md-option value="Open to all">Open to all</md-option>
-                      <md-option value="Know how to play">Know how to play</md-option>
-                      <md-option value="Skilled players only">Skilled players only</md-option>
-                    </md-select>
-
-
-                    </div>
-            </div>
-          </div>
-          <div>
+              <md-option value="Open to all">Open to all</md-option>
+              <md-option value="Know how to play">Know how to play</md-option>
+              <md-option value="Skilled players only">Skilled players only</md-option>
+            </md-select>
 
           </div>
-        </md-content>
-
-        <md-content layout-padding>
-          <div>
-            <form name="userForm">
-
-              <div layout-gt-xs="row">
-                <span class="games">Games:</span>
-
-                  <md-chips class="gameChips" ng-model="uc.eventService.newEvent.games" md-removable="uc.eventService.removable"></md-chips>
-
-
-
-              </div>
-<div class="textAlignCenter">
-  <span class="gameList">(Press enter after each game)</span>
-</div>
-              <md-input-container class="md-block">
-                <label>Address</label>
-                <input ng-model="uc.eventService.newEvent.address">
-              </md-input-container>
-
-              <div layout-gt-sm="row">
-                <md-input-container class="md-block" flex-gt-sm>
-                  <label>City</label>
-                  <input ng-model="uc.eventService.newEvent.city">
-                </md-input-container>
-
-                <md-input-container class="md-block" flex-gt-sm>
-                  <label>State</label>
-                  <md-select ng-model="uc.eventService.newEvent.state">
-                    <md-option ng-repeat="state in uc.eventService.states" value="{{state.abbrev}}">
-                      {{state.abbrev}}
-                    </md-option>
-                  </md-select>
-                </md-input-container>
-
-                <md-input-container class="md-block" flex-gt-sm>
-                  <label>Postal Code</label>
-                  <input name="postalCode" ng-model="uc.eventService.newEvent.zipCode" placeholder="12345"
-                         required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
-
-                  <div ng-messages="userForm.postalCode.$error" role="alert" multiple>
-                    <div ng-message="required" class="my-message">You must supply a postal code.</div>
-                    <div ng-message="pattern" class="my-message">That doesn't look like a valid postal
-                      code.
-                    </div>
-                    <div ng-message="md-maxlength" class="my-message">
-                      Don't use the long version silly...we don't need to be that specific...
-                    </div>
-                  </div>
-                </md-input-container>
-              </div>
-
-              <md-input-container class="md-block">
-                <label>Description</label>
-                <textarea ng-model="uc.eventService.newEvent.description" rows="5" md-select-on-focus></textarea>
-              </md-input-container>
-
-            </form>
-
-          </div>
-          <md-button type="button" name="button" class="floatRight md-raised md-primary" ng-click="uc.eventService.createEvent()">Submit</md-button>
-          <md-button type="button" name="button" class="floatRight md-raised md-primary"><a class="cancelLink" href="#/myevents">Cancel</a></md-button>
-        </md-content>
+        </div>
+      </div>
+      <div>
 
       </div>
+    </md-content>
+
+    <md-content layout-padding>
+      <div>
+        <form name="userForm">
+
+          <div layout-gt-xs="row">
+            <span class="games">Games:</span>
+
+            <md-chips class="gameChips" ng-model="uc.eventService.newEvent.games" md-removable="uc.eventService.removable"></md-chips>
+
+          </div>
+          <div class="textAlignCenter">
+            <span class="gameList">(Press enter after each game)</span>
+          </div>
+          <md-input-container class="md-block">
+            <label>Address</label>
+            <input ng-model="uc.eventService.newEvent.address">
+          </md-input-container>
+
+          <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>City</label>
+              <input ng-model="uc.eventService.newEvent.city">
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>State</label>
+              <md-select ng-model="uc.eventService.newEvent.state">
+                <md-option ng-repeat="state in uc.eventService.states" value="{{state.abbrev}}">
+                  {{state.abbrev}}
+                </md-option>
+              </md-select>
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Postal Code</label>
+              <input name="postalCode" ng-model="uc.eventService.newEvent.zipCode" placeholder="12345"
+              required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
+
+              <div ng-messages="userForm.postalCode.$error" role="alert" multiple>
+                <div ng-message="required" class="my-message">You must supply a postal code.</div>
+                <div ng-message="pattern" class="my-message">That doesn't look like a valid postal
+                  code.
+                </div>
+                <div ng-message="md-maxlength" class="my-message">
+                  Don't use the long version silly...we don't need to be that specific...
+                </div>
+              </div>
+            </md-input-container>
+          </div>
+
+          <md-input-container class="md-block">
+            <label>Description</label>
+            <textarea ng-model="uc.eventService.newEvent.description" rows="5" md-select-on-focus></textarea>
+          </md-input-container>
+
+        </form>
+
+      </div>
+      <md-button type="button" name="button" class="floatRight md-raised md-primary" ng-click="uc.eventService.createEvent()">Submit</md-button>
+      <md-button type="button" name="button" class="floatRight md-raised md-primary"><a class="cancelLink" href="#/myevents">Cancel</a></md-button>
+    </md-content>
+
+  </div>
 
 
 </div>
