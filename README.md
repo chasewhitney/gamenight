@@ -1,3 +1,5 @@
+As Google now charges to use Google Maps, this project won't be updated.
+
 # GameNight
 
 GameNight was built as an educational project while I attended Prime Digital Academy. This web application allows users to create, manage, and search for gaming events. Gaming events are created as either a board game, video game, or outdoor gaming event. Created events appear in a Google Maps UI which can be interacted with, allowing users to review event details, save the event to a My Events section and request approval from the host to attend the event. Once the event host approves a request to attend, the approved user has access to the event's address.
